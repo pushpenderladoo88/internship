@@ -17,6 +17,7 @@ public class ContactAction extends ActionSupport {
     private String id; 
     private String username;
     private String password;
+    public String userId = "";
  
     private ContactManager contactManager;
  
@@ -34,8 +35,14 @@ public class ContactAction extends ActionSupport {
      Check insertValues = new Check();
      System.out.println("username "+ username);
      System.out.println("password "+ password);
+     System.out.println("id  " + id);
+     
+     //this.id = userId;
       int i = insertValues.insert(this);
-       if(i>0){
+      System.out.println("status "  + i);
+       if(i == 3){
+    	   return "error";
+       }else if(i>0){
     	   return "login";
        }
        else{
@@ -47,6 +54,7 @@ public class ContactAction extends ActionSupport {
  public String checkEmployee() {
 	 Check checkUser = new Check();
 	 System.out.println("id is "+ id);
+	 userId = id;
 	 String userRole = checkUser.checkUserRole(id);
 	 //String userRole = checkUser.checkUserRole(userId);
 			 if(userRole.equalsIgnoreCase("MANAGER")){

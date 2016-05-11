@@ -45,18 +45,36 @@ public class Check extends ActionSupport {
    
    public int insert(ContactAction s){
 	   int status=0;
+	   String userName = null;
 	      Connection conn = null;
 
 	      try {
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "INSERT INTO login_tbl VAUES(?,?,?)";
-	         PreparedStatement ps = conn.prepareStatement(sql);
-	         ps.setString(1, s.getId());
-	         ps.setString(2, s.getUsername());
-	         ps.setString(3, s.getPassword());
-	         status=ps.executeUpdate();
+	         
+	         String checkQuery = "Select username from login_tbl where user_id = ?";
+	         PreparedStatement ps1 = conn.prepareStatement(checkQuery);
+	         ps1.setString(1, s.getId());
+	         ResultSet rs = ps1.executeQuery();
+
+	         while (rs.next()) {
+	        	 userName = rs.getString("username");
+	           // ret = empRole;
+	         }
+	         
+	         if(userName != null){
+	        	status = 3;
+	         }else{
+	        	 String sql = "INSERT INTO login_tbl VALUES(?,?,?)";
+		         PreparedStatement ps = conn.prepareStatement(sql);
+		         ps.setString(1, s.getId());
+		         ps.setString(2, s.getUsername());
+		         ps.setString(3, s.getPassword());
+		         status=ps.executeUpdate();
+	         }
+	         
+	        
 	      } catch (Exception e) {
 	         System.out.println(e);
 	      }

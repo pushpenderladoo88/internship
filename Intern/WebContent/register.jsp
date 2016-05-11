@@ -70,6 +70,7 @@ function checkPass()
     <div id='pwd_strength'></div>
     <s:textfield type="password" name="CnfPassword" label="Confirm Password" id="CnfPassword" onkeyup="checkPass(); return false;"/>
     <span id="confirmMessage" class="confirmMessage"></span>
+     <s:hidden name="id" label="id"/>
     <s:submit value="Submit"/>
      
 </s:form>
