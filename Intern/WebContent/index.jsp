@@ -40,8 +40,8 @@
 <h1 align="center"> Login/Register </h1>
 <s:actionerror/>
 <s:form action="signup" method="post">
-    <s:textfield name="contact.UserName" label="Username" id="a"/>
-    <s:textfield type="password" name="contact.Password" label="Password" id="b"/>
+    <s:textfield name="username" label="Username" id="a" />
+    <s:textfield type="password" name="password" label="Password" id="b"/>
     <s:submit value="Login" action="login" method="post"/>
     <s:submit value="Signup" />
 </s:form>

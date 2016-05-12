@@ -60,9 +60,24 @@ public class ContactAction extends ActionSupport {
 			 if(userRole.equalsIgnoreCase("MANAGER")){
 				 return "register";
 			 }else{
-				 return "profile";
+				 return "registerError";
 			 }
  }
+ 
+ 
+ public String loginManager(){
+	 Check loginUser = new Check();
+	 System.out.println("username is "+ username);
+	 System.out.println("password is "+ password);
+	 String validUser = loginUser.login(this);
+	 System.out.println("returned value is "+ validUser);
+	 if(validUser.equalsIgnoreCase("VALID")){
+		 return "profile";
+	 }else{
+		 return "default";
+	 }
+	 
+ } 
       
     public String signup() throws Exception{
     	

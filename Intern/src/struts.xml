@@ -18,13 +18,19 @@
          <action name="check" 
          class="net.pankaj.view.ContactAction" method="checkEmployee">
          <result name="register">/register.jsp</result>
-         <result name="profile">/profile.jsp</result>
+         <result name="registerError">/registerError.jsp</result>
       </action>
       
          <action name="register"
            class="net.pankaj.view.ContactAction" method="registerManager">
            <result name="login">/index.jsp</result>
            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="login"
+           class="net.pankaj.view.ContactAction" method="loginManager">
+           <result name="profile">/profile.jsp</result>
+           <result name="default">/default.jsp</result>
       </action>
           
         <action name="delete"

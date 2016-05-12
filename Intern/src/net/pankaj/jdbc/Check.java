@@ -15,6 +15,7 @@ public class Check extends ActionSupport {
    private String role;
    private String user;
    private String pass;
+   
 
    public String checkUserRole(String userId ) {
 	  String empRole;
@@ -53,9 +54,9 @@ public class Check extends ActionSupport {
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
 	         
-	         String checkQuery = "Select username from login_tbl where user_id = ?";
+	         String checkQuery = "Select username from login_tbl where username = ?";
 	         PreparedStatement ps1 = conn.prepareStatement(checkQuery);
-	         ps1.setString(1, s.getId());
+	         ps1.setString(1, s.getUsername());
 	         ResultSet rs = ps1.executeQuery();
 
 	         while (rs.next()) {
@@ -79,6 +80,38 @@ public class Check extends ActionSupport {
 	         System.out.println(e);
 	      }
 	      return status;
+	   }
+   
+   public String login(ContactAction s) {
+	      String retur = ERROR;
+	      String valid;
+	      Connection conn = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "SELECT * from login_tbl where username = ? AND password = ?";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, s.getUsername());
+	         ps.setString(2, s.getPassword());
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	            valid = rs.getString(1);
+	            retur = valid;
+	         }
+	      } catch (Exception e) {
+	         retur = ERROR;
+	      } finally { 
+	         if (conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	            }
+	         }
+	      }
+	      return retur;
 	   }
 
    public String getRole() {
