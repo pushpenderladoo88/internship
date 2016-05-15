@@ -18,6 +18,7 @@ public class ContactAction extends ActionSupport {
     private String username;
     private String password;
     public String userId = "";
+    public String buttonclickd;
  
     private ContactManager contactManager;
  
@@ -41,12 +42,14 @@ public class ContactAction extends ActionSupport {
       int i = insertValues.insert(this);
       System.out.println("status "  + i);
        if(i == 3){
-    	   return "error";
+    	   addActionError("User already exist");
+    	   return "register";
        }else if(i>0){
     	   return "login";
        }
        else{
-    	   return "error";
+    	   addActionError("Username already exist");
+    	   return "register";
        }
  }
     
@@ -58,9 +61,19 @@ public class ContactAction extends ActionSupport {
 	 String userRole = checkUser.checkUserRole(id);
 	 //String userRole = checkUser.checkUserRole(userId);
 			 if(userRole.equalsIgnoreCase("MANAGER")){
-				 return "register";
+				 String userName = checkUser.checkIfUserExist(id);
+				 if(userName != null){
+					 addActionError("User Already registered");
+					 return "check";
+
+				 }else{
+					 return "register";
+
+				 }
 			 }else{
-				 return "registerError";
+				 addActionError("Registration  not allowed for this userid");
+
+				 return "check";
 			 }
  }
  
@@ -74,14 +87,22 @@ public class ContactAction extends ActionSupport {
 	 if(validUser.equalsIgnoreCase("VALID")){
 		 return "profile";
 	 }else{
-		 return "default";
+		 addActionError("UserName and password is not correct");
+		 return "index";
 	 }
 	 
  } 
       
     public String signup() throws Exception{
-    	
-        return "check";
+    	String navigte;
+    	System.out.println("button clicked is --->"+buttonclickd);
+    	if(buttonclickd.equalsIgnoreCase("signup")){
+    		navigte= "check";
+    	}else{
+    		navigte =loginManager();
+    	}
+    	     
+        return navigte;
     }
  
     
@@ -121,6 +142,14 @@ public class ContactAction extends ActionSupport {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getButtonclickd() {
+		return buttonclickd;
+	}
+
+	public void setButtonclickd(String buttonclickd) {
+		this.buttonclickd = buttonclickd;
 	}
 
 	

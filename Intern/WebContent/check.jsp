@@ -38,7 +38,11 @@
 <body>
 <div class="add">
 <h1> Only managers can register for this program</h1>
-<s:actionerror/>
+<s:if test="hasActionErrors()">
+   <div class="errors" style="color: red">
+      <s:actionerror/>
+   </div>
+</s:if>
 <s:form action="check" method="post" onsubmit="return validate();" >
     <s:textfield name="id" label="Employment ID"/>
     <s:submit value="Submit" align="center"/>

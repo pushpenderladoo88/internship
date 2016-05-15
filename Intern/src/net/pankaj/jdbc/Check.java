@@ -82,6 +82,38 @@ public class Check extends ActionSupport {
 	      return status;
 	   }
    
+   
+   public String checkIfUserExist(String userId){
+	   int status=0;
+	   String userid = userId;
+	   String userName = null;
+	      Connection conn = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         
+	         String checkQuery = "Select username from login_tbl where user_id = ?";
+	         PreparedStatement ps1 = conn.prepareStatement(checkQuery);
+	         ps1.setString(1, userId);
+	         ResultSet rs = ps1.executeQuery();
+
+	         while (rs.next()) {
+	        	 userName = rs.getString("username");
+	           // ret = empRole;
+	         }
+	         
+	         
+	        
+	      } catch (Exception e) {
+	         System.out.println(e);
+	      }
+	      return userName;
+	   }
+   
+   
+   
    public String login(ContactAction s) {
 	      String retur = ERROR;
 	      String valid;
@@ -99,7 +131,7 @@ public class Check extends ActionSupport {
 
 	         while (rs.next()) {
 	            valid = rs.getString(1);
-	            retur = valid;
+	            retur = "valid";
 	         }
 	      } catch (Exception e) {
 	         retur = ERROR;

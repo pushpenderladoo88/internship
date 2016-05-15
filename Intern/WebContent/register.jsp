@@ -63,7 +63,12 @@ function checkPass()
 <body>
 <div class="add">
 <h1 align="center"> Register </h1>
-<s:actionerror/>
+<s:if test="hasActionErrors()">
+   <div class="errors" style="color: red">
+      <s:actionerror/>
+   </div>
+</s:if>
+
 <s:form action="register" method="post" onclick="return Validate()">
     <s:textfield name="username" label="Username"/>
     <s:textfield type="password" name="password" label="Password" id="Password" onkeyup='CheckPasswordStrength(this.value);'/>

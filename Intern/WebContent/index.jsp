@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Contact Manager</title>
+ <script type="text/javascript">
+ function loginButtonClicked(){
+	 document.getElementById("buttonId").value ="login";
+ }
+ function signUpButtonClicked(){
+	 document.getElementById("buttonId").value ="signUp";
+ }
+ </script>
  <!--script type="text/javascript">
             function validate()
             {
@@ -34,16 +42,24 @@
             };
 
         </script-->
-</head>
+</head>	
 <body>
 <div class="add">
 <h1 align="center"> Login/Register </h1>
-<s:actionerror/>
-<s:form action="signup" method="post">
+<s:if test="hasActionErrors()">
+   <div class="errors" style="color: red">
+      <s:actionerror/>
+   </div>
+</s:if>
+
+
+
+<s:form  action="signup" method="post">
     <s:textfield name="username" label="Username" id="a" />
-    <s:textfield type="password" name="password" label="Password" id="b"/>
-    <s:submit value="Login" action="login" method="post"/>
-    <s:submit value="Signup" />
+    <s:textfield type="password" name="password" label="Password" id="b" />
+    <s:submit value="Login" action="login" onclick="loginButtonClicked();"/>
+    <s:submit value="Signup" action="signup" onclick="signUpButtonClicked();"/>
+    <s:hidden name="buttonclickd" label="Username" id="buttonId" />
 </s:form>
 </div>
 </body>
