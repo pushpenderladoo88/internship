@@ -45,7 +45,7 @@
 </head>	
 <body>
 <div class="add">
-<h1 align="center"> Login/Register </h1>
+<h1 align="center" id="head"> Login/Register </h1>
 <s:if test="hasActionErrors()">
    <div class="errors" style="color: red">
       <s:actionerror/>

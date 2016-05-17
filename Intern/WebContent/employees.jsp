@@ -20,17 +20,25 @@
  function statusButtonClicked(){
 	 document.getElementById("buttonId").value ="status";
  }
+ function addButtonClicked(){
+	 document.getElementById("buttonId").value ="add";
+ }
+ function deleteButtonClicked(){
+	 document.getElementById("buttonId").value ="delete";
+ }
  </script>
  
 </head>	
 <body>
 <div class="add">
-<h1> User Profile </h1>
+<h1> Employees </h1>
 <s:form  action="home" method="post">
     <s:submit value="Proflie" action="profile" onclick="profileButtonClicked();"/>
     <s:submit value="Employees" action="employees" onclick="emloyeesButtonClicked();"/>
     <s:submit value="Project" action="project" onclick="projectButtonClicked();"/>
     <s:submit value="Status" action="status" onclick="statusButtonClicked();"/>
+    <s:submit value="Add Employee" action="add" onclick="addButtonClicked();"/>
+    <s:submit value="Remove Employee" action="delete" onclick="deleteButtonClicked();"/> 
     <s:hidden name="buttonclickd" label="use" id="buttonId" />
     <s:textfield name="id" label="Employee ID"/>
     <s:textfield name="firstName" label="First Name"/>

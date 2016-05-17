@@ -25,21 +25,13 @@
 </head>	
 <body>
 <div class="add">
-<h1> User Profile </h1>
+<h1> Project Status </h1>
 <s:form  action="home" method="post">
     <s:submit value="Proflie" action="profile" onclick="profileButtonClicked();"/>
     <s:submit value="Employees" action="employees" onclick="emloyeesButtonClicked();"/>
     <s:submit value="Project" action="project" onclick="projectButtonClicked();"/>
-    <s:submit value="Status" action="status" onclick="statusButtonClicked();"/>
+    <s:submit value="Status" action="status" onclick="statusButtonClicked();"/> 
     <s:hidden name="buttonclickd" label="use" id="buttonId" />
-    <s:textfield name="id" label="Employee ID"/>
-    <s:textfield name="firstName" label="First Name"/>
-    <s:textfield name="lastName" label="Last Name"/>
-    <s:textfield name="emailId" label="Email ID"/>
-    <s:textfield name="dob" label="Birth Date"/>
-    <s:textfield name="gender" label="Gender"/>
-    <s:textfield name="salary" label="Salary"/>
-    <s:textfield name="roleName" label="Role"/>
 </s:form>
 </div>
 </body>

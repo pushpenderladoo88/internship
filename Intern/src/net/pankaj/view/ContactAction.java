@@ -87,7 +87,7 @@ public class ContactAction extends ActionSupport {
 	 if(validUser.equalsIgnoreCase("VALID")){
 		 return "profile";
 	 }else{
-		 addActionError("UserName and password is not correct");
+		 addActionError("Username or password is not correct");
 		 return "index";
 	 }
 	 
