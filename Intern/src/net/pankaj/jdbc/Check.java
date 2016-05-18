@@ -252,7 +252,7 @@ return status;
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "SELECT * FROM user_tbl WHERE USER_ID = ? AND ROLE_ID = 1";
+	         String sql = "SELECT * FROM user_tbl WHERE MANAGER_ID = ? ";
 	         //sql+=" empid = ? ";
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ps.setString(1, userId);

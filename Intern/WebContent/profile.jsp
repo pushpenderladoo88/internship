@@ -31,32 +31,28 @@
 <tbody>
 <tr>
 <td>
-<h2>U S E R &nbsp; &nbsp; &nbsp;D E T A I L S</h2>
-<a href="update.jsp?id=<s:property value="id"/>update</a>
+<!-- <h2>D E T A I L S</h2> -->
+<%-- <a href="update.jsp?id=<s:property value="id"/>">update</a> --%>
 <table style="height: 250px;" width="900" border="1">
-<tbody>
 <tr>
-<td><s:label value="First Name"></s:label> </td>
+<td>First Name </td>
 <td><s:label name="userDetails.firstName"></s:label> </td>
-<td width="20px"></td>
-<td><s:label value="Last Name"></s:label></td>
+<td>Last Name </td>
 <td><s:label name="userDetails.lastName"></s:label></td>
 </tr>
 <tr>
-<td><s:label value="Email ID"></s:label></td>
+<td>Email ID </td>
 <td><s:label name="userDetails.emailId"></s:label></td>
-<td width="20px"></td>
-<td><s:label value="Role"></s:label></td>
+<td>Role </td>
 <td><s:label name="userDetails.roleName"></s:label></td>
 </tr>
 <tr>
-<td><s:label value="Gender"></s:label></td>
+<td>Gender </td>
 <td><s:label name="userDetails.gender"></s:label></td>
-<td width="20px"></td>
-<td><s:label value="Date of birth"></s:label></td>
+<td>Date of birth </td>
 <td><s:label name="userDetails.dob"></s:label></td>
 </tr>
-</tbody>
+
 </table>
 </td>
 </tr>
@@ -73,6 +69,8 @@
 </table>
 </td>
 </tr>
+
+
 </tbody>
 </table>
 </s:form>
