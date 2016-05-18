@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import net.pankaj.model.Contact;
 import net.pankaj.view.ContactAction;
 
 public class Check extends ActionSupport {
@@ -145,6 +146,99 @@ public class Check extends ActionSupport {
 	      }
 	      return retur;
 	   }
+   
+   
+   public String retrieveUserId(ContactAction s) {
+	      String retur = ERROR;
+	      String valid;
+	      String userId="";
+	      Connection conn = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "SELECT user_id from login_tbl where username = ? AND password = ?";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, s.getUsername());
+	         ps.setString(2, s.getPassword());
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 userId = rs.getString(1);
+	            //retur = "valid";
+	         }
+	      } catch (Exception e) {
+	         retur = ERROR;
+	      } finally { 
+	         if (conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	            }
+	         }
+	      }
+	      return userId;
+	   }
+   
+   public Contact retrieveUserDetails(String userId ) {
+		  Contact details = new Contact();
+	      Connection conn = null;
+	      String ret = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "SELECT * FROM role_tbl A, user_tbl B WHERE B.USER_ID = ? AND A.ROLE_ID = B.ROLE_ID ";
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 //details.setUserame(rs.getString("username"));
+	        	 details.setFirstName(rs.getString("first_name"));
+	        	 details.setLastName(rs.getString("last_name"));
+	        	 details.setEmailId(rs.getString("email_id"));
+	        	 details.setRoleName(rs.getString("role_name"));
+	        	 details.setGender(rs.getString("gender"));
+	        	 details.setDob(rs.getDate("dob")); 
+	         }
+	      } catch (Exception e) {
+	         ret = ERROR;
+	      } 
+	      
+	      return details;
+	   }
+   
+   public Contact retrieveemployeeList(String userId ) {
+		  Contact details = new Contact();
+	      Connection conn = null;
+	      String ret = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "SELECT * FROM user_tbl WHERE USER_ID = ? AND ROLE_ID = 1";
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 //details.setUserame(rs.getString("username"));
+	        	 details.setFirstName(rs.getString("first_name"));
+	         }
+	      } catch (Exception e) {
+	         ret = ERROR;
+	      } 
+	      
+	      return details;
+	   }
 
    public String getRole() {
       return role;
@@ -154,3 +248,5 @@ public class Check extends ActionSupport {
       this.role = role;
    }
 }
+
+

@@ -18,7 +18,7 @@ public class Contact extends ActionSupport implements Serializable{
 
     private String userId;
     private String firstName;
-    private String last_Name;
+    private String lastName;
     private String emailId;
     private String gender;
     private String roleId;
@@ -57,11 +57,11 @@ public class Contact extends ActionSupport implements Serializable{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLast_Name() {
-		return last_Name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_Name(String last_Name) {
-		this.last_Name = last_Name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmailId() {
 		return emailId;

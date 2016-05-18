@@ -19,6 +19,8 @@ public class ContactAction extends ActionSupport {
     private String password;
     public String userId = "";
     public String buttonclickd;
+    Contact userDetails = new Contact();
+    Contact employeeList = new Contact();
  
     private ContactManager contactManager;
  
@@ -75,7 +77,7 @@ public class ContactAction extends ActionSupport {
 
 				 return "check";
 			 }
- }
+ } 
  
  
  public String loginManager(){
@@ -85,6 +87,10 @@ public class ContactAction extends ActionSupport {
 	 String validUser = loginUser.login(this);
 	 System.out.println("returned value is "+ validUser);
 	 if(validUser.equalsIgnoreCase("VALID")){
+		 String userId = loginUser.retrieveUserId(this);
+		 
+		 userDetails = loginUser.retrieveUserDetails(userId);
+		 employeeList = loginUser.retrieveemployeeList(userId);
 		 return "profile";
 	 }else{
 		 addActionError("Username or password is not correct");
@@ -150,6 +156,14 @@ public class ContactAction extends ActionSupport {
 
 	public void setButtonclickd(String buttonclickd) {
 		this.buttonclickd = buttonclickd;
+	}
+
+	public Contact getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(Contact userDetails) {
+		this.userDetails = userDetails;
 	}
 
 	
