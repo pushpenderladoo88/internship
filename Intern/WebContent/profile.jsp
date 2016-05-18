@@ -32,6 +32,7 @@
 <tr>
 <td>
 <h2>U S E R &nbsp; &nbsp; &nbsp;D E T A I L S</h2>
+<a href="update.jsp?id=<s:property value="id"/>update</a>
 <table style="height: 250px;" width="900" border="1">
 <tbody>
 <tr>

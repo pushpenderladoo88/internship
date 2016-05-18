@@ -17,6 +17,8 @@ public class ContactAction extends ActionSupport {
     private String id; 
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
     public String userId = "";
     public String buttonclickd;
     Contact userDetails = new Contact();
@@ -98,6 +100,20 @@ public class ContactAction extends ActionSupport {
 	 }
 	 
  } 
+ 
+ public String update(){
+	 Check updateUser = new Check();
+	 System.out.println("firstname is"+ firstName);
+	 System.out.println("lastname is "+ lastName);
+	 int i = updateUser.update(this);
+	 
+	 if(i>0){
+		 return "profile";
+	 }else{
+		 return "error";
+	 }
+	 
+ } 
       
     public String signup() throws Exception{
     	String navigte;
@@ -164,6 +180,30 @@ public class ContactAction extends ActionSupport {
 
 	public void setUserDetails(Contact userDetails) {
 		this.userDetails = userDetails;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	

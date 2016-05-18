@@ -42,7 +42,8 @@
  
         <action name="update"
             class="net.pankaj.view.ContactAction" method="update">
-            <result name="success" type="chain">index</result>
+            <result name="profile">/profile.jsp</result>
+            <result name="error">/error.jsp</result>
         </action> 
         
     

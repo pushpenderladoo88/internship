@@ -147,7 +147,37 @@ public class Check extends ActionSupport {
 	      return retur;
 	   }
    
-   
+   public int update(ContactAction s){
+	   int status=0;
+	   String userName = null;
+	      Connection conn = null;
+	      try{
+	    	  String URL = "jdbc:mysql://localhost:3306/manage";
+		         Class.forName("com.mysql.jdbc.Driver");
+		         conn = DriverManager.getConnection(URL, "root", "12345");
+	   String sql = "INSERT INTO login_tbl VALUES(?,?,?)";
+       PreparedStatement ps = conn.prepareStatement(sql);
+       ps.setString(1, s.getId());
+       ps.setString(2, s.getUsername());
+       ps.setString(3, s.getPassword());
+       status=ps.executeUpdate();
+   }
+    catch (Exception e) {
+   System.out.println(e);
+}finally { 
+    if (conn != null) {
+        try {
+           conn.close();
+        } catch (Exception e) {
+        }
+     }
+  }
+
+return status;
+}
+
+	   
+
    public String retrieveUserId(ContactAction s) {
 	      String retur = ERROR;
 	      String valid;
@@ -247,6 +277,7 @@ public class Check extends ActionSupport {
    public void setRole(String role) {
       this.role = role;
    }
+
 }
 
 
