@@ -26,7 +26,7 @@ public class Contact extends ActionSupport implements Serializable{
     private Date dob;
     private int salary;
     private char isActive;
-    private String userame;
+    private String username;
     private String password;
     private String statusId;
     private String status;
@@ -105,11 +105,11 @@ public class Contact extends ActionSupport implements Serializable{
 	public void setIsActive(char isActive) {
 		this.isActive = isActive;
 	}
-	public String getUserame() {
-		return userame;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserame(String userame) {
-		this.userame = userame;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;

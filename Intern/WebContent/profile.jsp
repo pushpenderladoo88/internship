@@ -32,7 +32,7 @@
 <tr>
 <td>
 <!-- <h2>D E T A I L S</h2> -->
-<%-- <a href="update.jsp?id=<s:property value="id"/>">update</a> --%>
+<a href="update.jsp?userId=<s:property value="userId"/>">update</a>
 <table style="height: 250px;" width="900" border="1">
 <tr>
 <td>First Name </td>
@@ -59,11 +59,12 @@
 <tr>
 <td>
 <h1> E M P L O Y E E S &nbsp; &nbsp; &nbsp;L I S T </h1>
+<a href="addEmployee.jsp?userId=<s:property value="userId"/>">Add Employee</a>
 <table style="height: 450px;" width="100%" border="1">
 <tbody>
 <tr>
 <td>Project Chart</td>
-<td><s:label value="First Name" name="employeeList.firstName"></s:label></td>
+<td><s:label name="employeeList.firstName"></s:label></td>
 </tr>
 </tbody>
 </table>

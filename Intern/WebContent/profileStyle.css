@@ -7,15 +7,15 @@ body {
 }
 
 .add{
-	width: 900px;
-	height: 500px;
-    padding: 20px;
+	width: 50%;
+	height: 90%;
+    padding: 15px;
     background: #fcfcfc;
     border-radius: 5px;
     border-top: 5px solid #ff656c;
     position:absolute;
-    left:100px;
-    top:100px;
+    left:250px;
+    top:50px;
 }
 
 .add input{

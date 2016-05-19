@@ -147,6 +147,37 @@ public class Check extends ActionSupport {
 	      return retur;
 	   }
    
+   public String adding(ContactAction s) {
+	      String retur = ERROR;
+	      String valid;
+	      Connection conn = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "update user_tbl set manager_id=user_id where user_id = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, s.getManagerId());
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	            valid = rs.getString(1);
+	            retur = "valid";
+	         }
+	      } catch (Exception e) {
+	         retur = ERROR;
+	      } finally { 
+	         if (conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	            }
+	         }
+	      }
+	      return retur;
+	   }
+   
    public int update(ContactAction s){
 	   int status=0;
 	   String userName = null;
@@ -155,11 +186,19 @@ public class Check extends ActionSupport {
 	    	  String URL = "jdbc:mysql://localhost:3306/manage";
 		         Class.forName("com.mysql.jdbc.Driver");
 		         conn = DriverManager.getConnection(URL, "root", "12345");
-	   String sql = "INSERT INTO login_tbl VALUES(?,?,?)";
+	   String sql = "Update user_tbl set first_name = ?, last_name = ?, email_id = ?, dob = ?,"
+	   		+ "      gender = ?, salary = ?, role_id = ?, manager_id = ?, is_active = ? where user_id = ?";
        PreparedStatement ps = conn.prepareStatement(sql);
-       ps.setString(1, s.getId());
-       ps.setString(2, s.getUsername());
-       ps.setString(3, s.getPassword());
+       ps.setString(1, s.getUserId());
+       ps.setString(2, s.getFirstName());
+       ps.setString(3, s.getLastName());
+       ps.setString(4, s.getEmailId());
+       ps.setDate(5, s.getDob());
+       ps.setString(6, s.getGender());
+       ps.setInt(7, s.getSalary());
+       ps.setString(8, s.getRoleId());
+       ps.setString(9, s.getManagerId());
+       ps.setString(10, s.getIsActive());
        status=ps.executeUpdate();
    }
     catch (Exception e) {

@@ -28,6 +28,12 @@
            <result name="error">/error.jsp</result>
            <result name="register">/register.jsp</result>
          </action>
+         
+         <action name="addEmloyee"
+           class="net.pankaj.view.ContactAction" method="addEmployee">
+           <result name="added">/profile.jsp</result>
+           <result name="error">/addEmployee.jsp</result>
+         </action>
       
       <action name="login"
            class="net.pankaj.view.ContactAction" method="loginManager">
