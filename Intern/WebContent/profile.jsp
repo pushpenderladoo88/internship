@@ -32,7 +32,9 @@
 <tr>
 <td>
 <!-- <h2>D E T A I L S</h2> -->
-<a href="update.jsp?userId=<s:property value="userId"/>">update</a>
+<%-- <a  href="update.jsp?userId=<s:property value="userDetails.userId"/>">update</a> --%>
+<a href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+UPDATE<br></a> 
 <table style="height: 250px;" width="900" border="1">
 <tr>
 <td>First Name </td>
@@ -58,13 +60,30 @@
 </tr>
 <tr>
 <td>
-<h1> E M P L O Y E E S &nbsp; &nbsp; &nbsp;L I S T </h1>
-<a href="addEmployee.jsp?userId=<s:property value="userId"/>">Add Employee</a>
+<h1 style="text-align:left; float:left"> P R O J E C T &nbsp; &nbsp; &nbsp;S T A T U S </h1>
+<h1 style="text-align:right; float:right"> E M P L O Y E E S &nbsp; &nbsp; &nbsp;L I S T</h1>
+<hr style="clear:both;"/>
+ 
+<%-- <a href="addEmployee.jsp?userId=<s:property value="userId"/>">Add Employee</a> --%>
+<%-- <a href="<s:url action="addEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+ADD EMPLOYEE<br></a> --%>
 <table style="height: 450px;" width="100%" border="1">
 <tbody>
 <tr>
-<td>Project Chart</td>
-<td><s:label name="employeeList.firstName"></s:label></td>
+<td><img src="displayChart" /></td>
+<td>
+<a style="text-align:right; float:right" href="<s:url action="addEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+ADD EMPLOYEE<br></a>
+<s:iterator var="i" value="employeeList">
+<a href="<s:url action="showEmployee"><s:param name="userId" value="userId" ><s:property value="userId"/> </s:param></s:url>">
+<s:property value="firstName"/><br></a> 
+<%-- <s:url  action="#" >
+<s:param name="userId" value="userId" ><s:property value="firstName"/> </s:param>
+</s:url> <s:property value="firstName"/> --%>
+<%-- <s:a href="%url"><s:property value="firstName"/> </s: --%>
+
+</s:iterator>
+</td>
 </tr>
 </tbody>
 </table>
@@ -74,6 +93,30 @@
 
 </tbody>
 </table>
+<h1> T A S K &nbsp; &nbsp; &nbsp;D E T A I L S</h1>
+<table width="100%" border="1">
+<tr>
+    <th>Task</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Estimated Hours</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+</tr>
+
+<s:iterator value="taskList" var="j">
+
+    <tr>
+        <td><s:property value="taskName"/></td>
+        <td><s:property value="firstName"/>, <s:property value="lastName"/> </td>
+        <td><s:property value="status"/></td>
+        <td><s:property value="estimatedHours"/></td>
+        <td><s:property value="startDate"/></td>
+        <td><s:property value="endDate"/></td>
+    </tr> 
+  
+</s:iterator>
+ </table>
 </s:form>
 </div>
 </body>

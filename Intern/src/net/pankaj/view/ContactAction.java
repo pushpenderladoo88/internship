@@ -1,7 +1,14 @@
 package net.pankaj.view;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 
 import net.pankaj.controller.ContactManager;
 import net.pankaj.jdbc.Check;
@@ -41,8 +48,10 @@ public class ContactAction extends ActionSupport {
     private String roleName;
     public String buttonclickd;
     Contact userDetails = new Contact();
-    Contact employeeList = new Contact();
- 
+    List<Contact> employeeList = new ArrayList<Contact>();
+    List<Contact> taskList = new ArrayList<Contact>();
+    HttpServletRequest request;
+    HttpSession session;
     private ContactManager contactManager;
  
     public ContactAction() {
@@ -112,6 +121,7 @@ public class ContactAction extends ActionSupport {
 		 
 		 userDetails = loginUser.retrieveUserDetails(userId);
 		 employeeList = loginUser.retrieveemployeeList(userId);
+		 taskList = loginUser.retrievetaskList(userId);
 		 return "profile";
 	 }else{
 		 addActionError("Username or password is not correct");
@@ -120,19 +130,47 @@ public class ContactAction extends ActionSupport {
 	 
  } 
  
+ 
+ public String showEmployee() {
+	 Check loginUser = new Check();
+	 System.out.println("Inshide show method");
+	 //HttpServletRequest req= HttpS;
+	 //req = session.get
+	//session = req.getSession();
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	 //System.out.println("response ---->"+response);
+	 //String userId = (String)session.getAttribute("userId");
+	 userDetails = loginUser.retrieveUserDetails(userId);
+
+	 String userId = request.getParameter("userId");
+	 System.out.println("employee ID in showemployee is -->" + userId);
+return "viewEmployee";	
+}
  public String addEmployee(){
 	 Check add = new Check();
+	 
 	 System.out.println("user id is "+ userId);
-	 String addEmp = add.adding(this);
+	 System.out.println("manager id is "+ managerId);
+	 int addEmp = add.adding(managerId,userId);
 	 System.out.println("returned value is "+ addEmp);
-	 if(addEmp.equalsIgnoreCase("VALID")){
-		 String userId = add.retrieveUserId(this);
-	     setManagerId(userId);
-		 return "profile";
+	 if(addEmp>0){
+		 String uId = add.retrieveUserId(this);
+		 employeeList = add.retrieveemployeeList(managerId);
+		 return "added";
 	 }else{
 		 addActionError("Username or password is not correct");
-		 return "index";
+		 return "error";
 	 }
+	 
+ } 
+ public String goToAddEmployee(){
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	  managerId = request.getParameter("managerId");
+	 System.out.println("manager id is "+ managerId);
+		 return "success";
+	 
 	 
  } 
  
@@ -140,17 +178,47 @@ public class ContactAction extends ActionSupport {
 	 Check updateUser = new Check();
 	 System.out.println("firstname is"+ firstName);
 	 System.out.println("lastname is "+ lastName);
-	 String userId = updateUser.retrieveUserId(this);
+	 Check loginUser = new Check();
+	 System.out.println("Inshide show method");
+	 //HttpServletRequest req= HttpS;
+	 //req = session.get
+	//session = req.getSession();
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	 //System.out.println("response ---->"+response);
+	 //String userId = (String)session.getAttribute("userId");
+	 //userDetails = loginUser.retrieveUserDetails(userId);
+
+	 String userId = request.getParameter("uId");
+	 System.out.println("employee ID in update is -->" + userId);
+
+	 //String userId = updateUser.retrieveUserId(this);
 	 userDetails = updateUser.retrieveUserDetails(userId);
-	 int i = updateUser.update(this);
+	 /*int i = updateUser.update(this);
 	 
 	 if(i>0){
 		 return "profile";
 	 }else{
 		 return "error";
-	 }
-	 
+	 }*/
+	 return "update";
+ 
  } 
+ 
+ public String updateDetails(){
+	 Check updateUser = new Check();
+	 System.out.println("Inside updateDetails");
+int i = updateUser.update(this.userDetails);
+	 
+	 if(i>0){
+		 userDetails = updateUser.retrieveUserDetails(this.userDetails.getUserId());
+		 employeeList = updateUser.retrieveemployeeList(this.userDetails.getUserId());
+		 return "profile";
+	 }else{
+		 return "error";
+	 }	 
+	 
+ }
       
     public String signup() throws Exception{
     	String navigte;
@@ -387,13 +455,7 @@ public class ContactAction extends ActionSupport {
 		this.roleName = roleName;
 	}
 
-	public Contact getEmployeeList() {
-		return employeeList;
-	}
-
-	public void setEmployeeList(Contact employeeList) {
-		this.employeeList = employeeList;
-	}
+	
 
 	public ContactManager getContactManager() {
 		return contactManager;
@@ -405,6 +467,22 @@ public class ContactAction extends ActionSupport {
 
 	public Contact getContact() {
 		return contact;
+	}
+
+	public List<Contact> getEmployeeList() {
+		return employeeList;
+	}
+
+	public void setEmployeeList(List<Contact> employeeList) {
+		this.employeeList = employeeList;
+	}
+
+	public List<Contact> getTaskList() {
+		return taskList;
+	}
+
+	public void setTaskList(List<Contact> taskList) {
+		this.taskList = taskList;
 	}
 
 	

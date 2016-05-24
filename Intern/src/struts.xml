@@ -16,6 +16,11 @@
             <result name="check">/check.jsp</result>
         </action>
            
+           <action name="showEmployee" 
+         class="net.pankaj.view.ContactAction" method="showEmployee">
+            <result name="viewEmployee">/viewEmployee.jsp</result>
+        </action>
+           
          <action name="check" 
          class="net.pankaj.view.ContactAction" method="checkEmployee">
          <result name="register">/register.jsp</result>
@@ -29,12 +34,18 @@
            <result name="register">/register.jsp</result>
          </action>
          
-         <action name="addEmloyee"
+         <action name="goToAddEmployee"
+           class="net.pankaj.view.ContactAction" method="goToAddEmployee">
+           <result name="success">/addEmployee.jsp</result>
+         </action>
+         
+         <action name="addEmployee"
            class="net.pankaj.view.ContactAction" method="addEmployee">
            <result name="added">/profile.jsp</result>
            <result name="error">/addEmployee.jsp</result>
          </action>
-      
+         
+     
       <action name="login"
            class="net.pankaj.view.ContactAction" method="loginManager">
            <result name="profile">/profile.jsp</result>
@@ -50,7 +61,14 @@
             class="net.pankaj.view.ContactAction" method="update">
             <result name="profile">/profile.jsp</result>
             <result name="error">/error.jsp</result>
-        </action> 
+            <result name="update">/update.jsp</result>
+        </action>
+        
+        <action name="updateDetails"
+            class="net.pankaj.view.ContactAction" method="updateDetails">
+            <result name="profile">/profile.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>  
         
     
         <action name="index"

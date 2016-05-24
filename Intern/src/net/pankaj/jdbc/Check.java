@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.regexp.internal.RE;
 
 import net.pankaj.model.Contact;
 import net.pankaj.view.ContactAction;
@@ -147,26 +150,24 @@ public class Check extends ActionSupport {
 	      return retur;
 	   }
    
-   public String adding(ContactAction s) {
+   public int adding(String managerId,String userId) {
 	      String retur = ERROR;
 	      String valid;
+	      int status=0;
 	      Connection conn = null;
 
 	      try {
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "update user_tbl set manager_id=user_id where user_id = ? ";
+	         String sql = "update user_tbl set manager_id= ? where user_id = ? ";
 	         PreparedStatement ps = conn.prepareStatement(sql);
-	         ps.setString(1, s.getManagerId());
-	         ResultSet rs = ps.executeQuery();
+	         ps.setString(1, managerId);
+	         ps.setString(2, userId);
+	         status = ps.executeUpdate();
 
-	         while (rs.next()) {
-	            valid = rs.getString(1);
-	            retur = "valid";
-	         }
 	      } catch (Exception e) {
-	         retur = ERROR;
+	         status = 0;
 	      } finally { 
 	         if (conn != null) {
 	            try {
@@ -175,30 +176,27 @@ public class Check extends ActionSupport {
 	            }
 	         }
 	      }
-	      return retur;
+	      return status;
 	   }
    
-   public int update(ContactAction s){
+   public int update(Contact s){
 	   int status=0;
 	   String userName = null;
 	      Connection conn = null;
 	      try{
+	    	  System.out.println("inside databse " + s.getUserId());
 	    	  String URL = "jdbc:mysql://localhost:3306/manage";
 		         Class.forName("com.mysql.jdbc.Driver");
 		         conn = DriverManager.getConnection(URL, "root", "12345");
 	   String sql = "Update user_tbl set first_name = ?, last_name = ?, email_id = ?, dob = ?,"
-	   		+ "      gender = ?, salary = ?, role_id = ?, manager_id = ?, is_active = ? where user_id = ?";
+	   		+ "      gender = ? where user_id = ?";
        PreparedStatement ps = conn.prepareStatement(sql);
-       ps.setString(1, s.getUserId());
-       ps.setString(2, s.getFirstName());
-       ps.setString(3, s.getLastName());
-       ps.setString(4, s.getEmailId());
-       ps.setDate(5, s.getDob());
-       ps.setString(6, s.getGender());
-       ps.setInt(7, s.getSalary());
-       ps.setString(8, s.getRoleId());
-       ps.setString(9, s.getManagerId());
-       ps.setString(10, s.getIsActive());
+       ps.setString(1, s.getFirstName());
+       ps.setString(2, s.getLastName());
+       ps.setString(3, s.getEmailId());
+       ps.setDate(4,s.getDob());
+       ps.setString(5, s.getGender());
+       ps.setString(6, s.getUserId());
        status=ps.executeUpdate();
    }
     catch (Exception e) {
@@ -274,6 +272,7 @@ return status;
 	        	 details.setRoleName(rs.getString("role_name"));
 	        	 details.setGender(rs.getString("gender"));
 	        	 details.setDob(rs.getDate("dob")); 
+	        	 details.setUserId(rs.getString("user_id"));
 	         }
 	      } catch (Exception e) {
 	         ret = ERROR;
@@ -282,11 +281,11 @@ return status;
 	      return details;
 	   }
    
-   public Contact retrieveemployeeList(String userId ) {
-		  Contact details = new Contact();
+   public List<Contact> retrieveemployeeList(String userId ) {
+		
 	      Connection conn = null;
 	      String ret = null;
-
+	      List<Contact> employeeList = new ArrayList<Contact>();
 	      try {
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
@@ -299,16 +298,60 @@ return status;
 	         ResultSet rs = ps.executeQuery();
 
 	         while (rs.next()) {
+	        	  Contact details = new Contact();
 	        	 //details.setUserame(rs.getString("username"));
 	        	 details.setFirstName(rs.getString("first_name"));
+	        	 details.setUserId(rs.getString("user_id"));
+	        	 employeeList.add(details);
 	         }
 	      } catch (Exception e) {
 	         ret = ERROR;
 	      } 
 	      
-	      return details;
+	      return employeeList;
 	   }
 
+   public List<Contact> retrievetaskList(String userId ) {
+		  System.out.println("inside task details");
+	      Connection conn = null;
+	      String ret = null;
+	      List<Contact> taskList = new ArrayList<Contact>();
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME,"
+	        		 + "status_tbl.STATUS,task_assignment_tbl.ESTIMATED_HOURS,task_assignment_tbl.TASK_START_DATE ,"
+	        		 +"task_assignment_tbl.TASK_END_DATE from task_tbl,user_tbl,status_tbl,task_assignment_tbl"
+	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID"
+	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS"
+	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO"
+	        		 +"and user_tbl.MANAGER_ID = ? ";
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	  Contact details = new Contact();
+	        	 //details.setUserame(rs.getString("username"));
+	        	 details.setTaskName(rs.getString("task_name"));
+	        	 details.setFirstName(rs.getString("first_name"));
+	        	 details.setLastName(rs.getString("last_name"));
+	        	 details.setStatus(rs.getString("status"));
+	        	 details.setEstimatedHours(rs.getInt("estimated_hours"));
+	        	 details.setTaskStartDate(rs.getDate("task_start_date"));
+	        	 details.setTaskEndDate(rs.getDate("task_end_date"));
+	        	 details.setUserId(rs.getString("user_id"));
+	        	 taskList.add(details);
+	         }
+	      } catch (Exception e) {
+	         ret = ERROR;
+	      } 
+	      
+	      return taskList;
+	   }
    public String getRole() {
       return role;
    }

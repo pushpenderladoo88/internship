@@ -12,7 +12,7 @@
 <div class="add">
 <h1>Update User Details</h1>
 <s:actionerror/>
- <s:form action="update" method="post">
+ <s:form action="updateDetails" method="post">
     <s:textfield name="userDetails.userId" label="User ID"/>
     <s:textfield name="userDetails.firstName" label="First Name"/>
     <s:textfield name="userDetails.lastName" label="Last Name"/>
