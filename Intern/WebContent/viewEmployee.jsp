@@ -19,11 +19,11 @@
     <s:label name="userDetails.emailId" label="Email ID"/>
     <s:label name="userDetails.dob" label="Date Of Birth(MM/DD/YY)"/>
     <s:label name="userDetails.gender" label="Gender"/>
-    <s:label name="userDetails.salary" label="Salary"/>
-    <s:label name="userDetails.roleId" label="Role ID"/>
     <s:label name="userDetails.managerId" label="Manager ID"/>
-    <s:label name="userDetails.isActive" label="Active"/>
-    <s:submit value="Back" align="center"/>
+    <s:submit value="Back" align="left"/>
+    <a style="text-align:right; float:right;" href="<s:url action="deleteEmployee"><s:param name="userId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+Remove Employee<br></a>
+    
 </s:form>
 </div>
 </body>

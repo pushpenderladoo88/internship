@@ -18,11 +18,8 @@
     <s:textfield name="userDetails.lastName" label="Last Name"/>
     <s:textfield name="userDetails.emailId" label="Email ID"/>
     <s:textfield name="userDetails.dob" label="Date Of Birth(MM/DD/YY)"/>
-    <s:textfield name="userDetails.gender" label="Gender"/>
-    <s:textfield name="userDetails.salary" label="Salary"/>
     <s:textfield name="userDetails.roleId" label="Role ID"/>
     <s:textfield name="userDetails.managerId" label="Manager ID"/>
-    <s:textfield name="userDetails.isActive" label="Active"/>
     <s:submit value="Update Contact" align="center"/>
 </s:form>
 </div>

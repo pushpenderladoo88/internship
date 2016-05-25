@@ -13,11 +13,24 @@ import org.apache.struts2.ServletActionContext;
 import net.pankaj.controller.ContactManager;
 import net.pankaj.jdbc.Check;
 import net.pankaj.model.Contact;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
  
 import com.opensymphony.xwork2.ActionSupport;
+import net.pankaj.jdbc.Check; 
  
- 
-public class ContactAction extends ActionSupport {
+public class ContactAction extends ActionSupport{
  
     private static final long serialVersionUID = 9149826260758390091L;
     private Contact contact;
@@ -48,6 +61,7 @@ public class ContactAction extends ActionSupport {
     private String roleName;
     public String buttonclickd;
     Contact userDetails = new Contact();
+    private Connection dbConnection = null;
     List<Contact> employeeList = new ArrayList<Contact>();
     List<Contact> taskList = new ArrayList<Contact>();
     HttpServletRequest request;
@@ -115,13 +129,14 @@ public class ContactAction extends ActionSupport {
 	 System.out.println("username is "+ username);
 	 System.out.println("password is "+ password);
 	 String validUser = loginUser.login(this);
-	 System.out.println("returned value is "+ validUser);
+	 System.out.println("returned value is "+ validUser); 
 	 if(validUser.equalsIgnoreCase("VALID")){
 		 String userId = loginUser.retrieveUserId(this);
 		 
 		 userDetails = loginUser.retrieveUserDetails(userId);
 		 employeeList = loginUser.retrieveemployeeList(userId);
 		 taskList = loginUser.retrievetaskList(userId);
+		 
 		 return "profile";
 	 }else{
 		 addActionError("Username or password is not correct");
@@ -129,7 +144,6 @@ public class ContactAction extends ActionSupport {
 	 }
 	 
  } 
- 
  
  public String showEmployee() {
 	 Check loginUser = new Check();
@@ -163,7 +177,27 @@ return "viewEmployee";
 		 return "error";
 	 }
 	 
- } 
+ }
+ 
+ public String deleteEmployee(){
+	 Check delete = new Check();
+	 Check loginUser = new Check();
+	 System.out.println("user id is "+ userId);
+	 int deleteEmp = delete.deleting(managerId,userId);
+	 System.out.println("returned value is "+ deleteEmp);
+	 if(deleteEmp>0){
+		 String uId = delete.retrieveUserId(this);
+		 userDetails = loginUser.retrieveUserDetails(managerId);
+		 employeeList = loginUser.retrieveemployeeList(managerId);
+		 taskList = loginUser.retrievetaskList(managerId);
+		 return "deleted";
+	 }else{
+		 return "error";
+	 }
+	 
+ }
+ 
+ 
  public String goToAddEmployee(){
 	 request = ServletActionContext.getRequest();
 	 System.out.println("request ---->"+request);

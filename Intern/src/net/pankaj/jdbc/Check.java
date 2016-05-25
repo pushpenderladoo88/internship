@@ -48,6 +48,7 @@ public class Check extends ActionSupport {
       return ret;
    }
    
+
    public int insert(ContactAction s){
 	   int status=0;
 	   String userName = null;
@@ -164,6 +165,34 @@ public class Check extends ActionSupport {
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ps.setString(1, managerId);
 	         ps.setString(2, userId);
+	         status = ps.executeUpdate();
+
+	      } catch (Exception e) {
+	         status = 0;
+	      } finally { 
+	         if (conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	            }
+	         }
+	      }
+	      return status;
+	   }
+   
+   public int deleting(String managerId,String userId) {
+	      String retur = ERROR;
+	      String valid;
+	      int status=0;
+	      Connection conn = null;
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "update user_tbl set manager_id= NULL where user_id = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
 	         status = ps.executeUpdate();
 
 	      } catch (Exception e) {

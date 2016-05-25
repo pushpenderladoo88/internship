@@ -34,7 +34,8 @@
 <!-- <h2>D E T A I L S</h2> -->
 <%-- <a  href="update.jsp?userId=<s:property value="userDetails.userId"/>">update</a> --%>
 <a href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
-UPDATE<br></a> 
+EDIT<br>
+<img src="edit.png" alt="Edit Prfile" width="42" height="42" border="0"></a> 
 <table style="height: 250px;" width="900" border="1">
 <tr>
 <td>First Name </td>

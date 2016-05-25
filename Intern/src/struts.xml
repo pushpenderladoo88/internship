@@ -52,10 +52,11 @@
            <result name="index">/index.jsp</result>
       </action>
           
-        <action name="delete"
-            class="net.pankaj.view.ContactAction" method="delete">
-            <result name="success" type="chain">index</result>
-        </action>
+      <action name="deleteEmployee"
+           class="net.pankaj.view.ContactAction" method="deleteEmployee">
+           <result name="deleted">/profile.jsp</result>
+           <result name="error">/default.jsp</result>
+         </action>  
  
         <action name="update"
             class="net.pankaj.view.ContactAction" method="update">
