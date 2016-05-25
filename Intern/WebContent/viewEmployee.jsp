@@ -21,7 +21,8 @@
     <s:label name="userDetails.gender" label="Gender"/>
     <s:label name="userDetails.managerId" label="Manager ID"/>
     <s:submit value="Back" align="left"/>
-    <a style="text-align:right; float:right;" href="<s:url action="deleteEmployee"><s:param name="userId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+    <a style="text-align:right; float:right;" href="<s:url action="deleteEmployee"><s:param name="userId" value="userDetails.userId"><s:property value="userDetails.userId"/> </s:param>
+    <s:param name="managerId" value="userDetails.managerId"><s:property value="userDetails.managerId"/> </s:param></s:url>">
 Remove Employee<br></a>
     
 </s:form>

@@ -71,7 +71,9 @@ ADD EMPLOYEE<br></a> --%>
 <table style="height: 450px;" width="100%" border="1">
 <tbody>
 <tr>
-<td><img src="displayChart" /></td>
+<td>
+
+           <br /> <img src="displayChart" />
 <td>
 <a style="text-align:right; float:right" href="<s:url action="addEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
 ADD EMPLOYEE<br></a>
@@ -105,15 +107,15 @@ ADD EMPLOYEE<br></a>
     <th>End Date</th>
 </tr>
 
-<s:iterator value="taskList" var="j">
+<s:iterator var="j" value="taskList" >
 
     <tr>
         <td><s:property value="taskName"/></td>
-        <td><s:property value="firstName"/>, <s:property value="lastName"/> </td>
+        <td><s:property value="firstName "/> <s:property value="lastName"/> </td>
         <td><s:property value="status"/></td>
         <td><s:property value="estimatedHours"/></td>
-        <td><s:property value="startDate"/></td>
-        <td><s:property value="endDate"/></td>
+        <td><s:property value="taskStartDate"/></td>
+        <td><s:property value="taskEndDate"/></td>
     </tr> 
   
 </s:iterator>

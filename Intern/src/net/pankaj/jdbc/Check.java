@@ -302,6 +302,7 @@ return status;
 	        	 details.setGender(rs.getString("gender"));
 	        	 details.setDob(rs.getDate("dob")); 
 	        	 details.setUserId(rs.getString("user_id"));
+	        	 details.setManagerId(rs.getString("manager_id"));
 	         }
 	      } catch (Exception e) {
 	         ret = ERROR;
@@ -342,6 +343,7 @@ return status;
 
    public List<Contact> retrievetaskList(String userId ) {
 		  System.out.println("inside task details");
+		  System.out.println(userId);
 	      Connection conn = null;
 	      String ret = null;
 	      List<Contact> taskList = new ArrayList<Contact>();
@@ -349,13 +351,14 @@ return status;
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME,"
-	        		 + "status_tbl.STATUS,task_assignment_tbl.ESTIMATED_HOURS,task_assignment_tbl.TASK_START_DATE ,"
-	        		 +"task_assignment_tbl.TASK_END_DATE from task_tbl,user_tbl,status_tbl,task_assignment_tbl"
-	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID"
-	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS"
-	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO"
+	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME, "
+	        		 + "status_tbl.STATUS,task_assignment_tbl.ESTIMATED_HOURS,task_assignment_tbl.TASK_START_DATE , "
+	        		 +"task_assignment_tbl.TASK_END_DATE from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
+	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID "
+	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS "
+	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO "
 	        		 +"and user_tbl.MANAGER_ID = ? ";
+	         System.out.println("sql query  " + sql );
 	         //sql+=" empid = ? ";
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ps.setString(1, userId);
@@ -363,6 +366,7 @@ return status;
 	         ResultSet rs = ps.executeQuery();
 
 	         while (rs.next()) {
+	        	 System.out.println("inside resultset");
 	        	  Contact details = new Contact();
 	        	 //details.setUserame(rs.getString("username"));
 	        	 details.setTaskName(rs.getString("task_name"));
@@ -372,10 +376,11 @@ return status;
 	        	 details.setEstimatedHours(rs.getInt("estimated_hours"));
 	        	 details.setTaskStartDate(rs.getDate("task_start_date"));
 	        	 details.setTaskEndDate(rs.getDate("task_end_date"));
-	        	 details.setUserId(rs.getString("user_id"));
 	        	 taskList.add(details);
 	         }
 	      } catch (Exception e) {
+	    	  System.out.println("error happen");
+	    	  e.printStackTrace();
 	         ret = ERROR;
 	      } 
 	      

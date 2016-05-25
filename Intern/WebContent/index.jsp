@@ -54,7 +54,7 @@
 
 
 
-<s:form  action="signup" method="post">
+<s:form  action="signup">
     <s:textfield name="username" label="Username" id="a" />
     <s:textfield type="password" name="password" label="Password" id="b" />
     <s:submit value="Login" action="login" onclick="loginButtonClicked();"/>

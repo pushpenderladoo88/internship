@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.struts2.ServletActionContext;
 
 import net.pankaj.controller.ContactManager;
@@ -16,16 +17,19 @@ import net.pankaj.model.Contact;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import org.hibernate.annotations.Cache;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.jdbc.JDBCCategoryDataset;
+import org.jfree.data.jdbc.JDBCPieDataset;
  
 import com.opensymphony.xwork2.ActionSupport;
 import net.pankaj.jdbc.Check; 
@@ -61,10 +65,11 @@ public class ContactAction extends ActionSupport{
     private String roleName;
     public String buttonclickd;
     Contact userDetails = new Contact();
-    private Connection dbConnection = null;
+    private static Connection connection = null;
     List<Contact> employeeList = new ArrayList<Contact>();
     List<Contact> taskList = new ArrayList<Contact>();
     HttpServletRequest request;
+    HttpServletResponse response;
     HttpSession session;
     private ContactManager contactManager;
  
@@ -136,14 +141,87 @@ public class ContactAction extends ActionSupport{
 		 userDetails = loginUser.retrieveUserDetails(userId);
 		 employeeList = loginUser.retrieveemployeeList(userId);
 		 taskList = loginUser.retrievetaskList(userId);
-		 
-		 return "profile";
+		 System.out.println("tasklist size"+taskList.size());
+		 managerId =userId;
+		 request = ServletActionContext.getRequest();
+		 response = ServletActionContext.getResponse();
+		 System.out.println("request ---->"+request);
+		 System.out.println("response ---->"+response);
+		 /*try{
+			 doGet(request, response);
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		*/
+		 connection = getConnection();
+		 JDBCPieDataset dataSet = new JDBCPieDataset(connection);
+		 OutputStream out=null;
+         try {
+         dataSet.executeQuery("SELECT task_id , task_name from task_tbl");
+         JFreeChart chart = ChartFactory.createPieChart( "task", dataSet,true ,true ,false);
+                 
+         if (chart != null) {
+                 chart.setBorderVisible(true);
+                 int width = 500;
+                 int height = 500;
+                 response.setContentType("image/jpeg");
+                 out = response.getOutputStream();
+                 ChartUtilities.writeChartAsJPEG(out, chart, width, height);
+         }
+         }
+         catch (SQLException e) {
+                 System.err.println(e.getMessage());
+         }
+         catch (Exception e) {
+		e.printStackTrace();
+		}
+         finally
+          { try{
+           out.close();
+          }catch(Exception e){
+        	  e.printStackTrace();
+          }
+          }		 return "profile";
 	 }else{
 		 addActionError("Username or password is not correct");
 		 return "index";
 	 }
 	 
  } 
+ 
+ public void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+	 System.out.println("inside doget");
+	 connection = getConnection();
+ JDBCPieDataset dataSet = new JDBCPieDataset(connection);
+
+ try {
+ dataSet.executeQuery("SELECT task_id , task_name from task_tbl");
+ JFreeChart chart = ChartFactory.createPieChart(
+  "task", 
+  dataSet,                    
+  true,                    
+  true,                     
+  false                     
+  );
+         
+ if (chart != null) {
+         chart.setBorderVisible(true);
+         int width = 300;
+         int height = 100;
+         response.setContentType("image/jpeg");
+         OutputStream out = response.getOutputStream();
+         ChartUtilities.writeChartAsJPEG(out, chart, width, height);
+ }
+ }
+ catch (SQLException e) {
+         System.err.println(e.getMessage());
+ }
+ catch (Exception e) {
+	// TODO: handle exception
+	 e.printStackTrace();
+}
+}
  
  public String showEmployee() {
 	 Check loginUser = new Check();
@@ -159,6 +237,7 @@ public class ContactAction extends ActionSupport{
 
 	 String userId = request.getParameter("userId");
 	 System.out.println("employee ID in showemployee is -->" + userId);
+	 managerId=userDetails.getManagerId();
 return "viewEmployee";	
 }
  public String addEmployee(){
@@ -182,7 +261,10 @@ return "viewEmployee";
  public String deleteEmployee(){
 	 Check delete = new Check();
 	 Check loginUser = new Check();
+	 request = ServletActionContext.getRequest();
+	// String managerId = request.getParameter("managerId");
 	 System.out.println("user id is "+ userId);
+	 System.out.println("manager id" + managerId);
 	 int deleteEmp = delete.deleting(managerId,userId);
 	 System.out.println("returned value is "+ deleteEmp);
 	 if(deleteEmp>0){
@@ -253,6 +335,22 @@ int i = updateUser.update(this.userDetails);
 	 }	 
 	 
  }
+ 
+ public static Connection getConnection() {
+     if (connection != null)
+             return connection;
+     else {
+     
+     String dbUrl = "jdbc:mysql://localhost:3306/manage";
+     try {
+     Class.forName("com.mysql.jdbc.Driver");
+     connection = DriverManager.getConnection(dbUrl, "root", "12345");
+     } catch (Exception e) {
+             e.printStackTrace();
+     }
+     return connection;
+}
+}
       
     public String signup() throws Exception{
     	String navigte;
