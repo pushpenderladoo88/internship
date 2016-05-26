@@ -39,12 +39,22 @@
            <result name="success">/addEmployee.jsp</result>
          </action>
          
+         <action name="goToAddTask"
+           class="net.pankaj.view.ContactAction" method="goToAddTask">
+           <result name="success">/addTask.jsp</result>
+         </action>
+         
          <action name="addEmployee"
            class="net.pankaj.view.ContactAction" method="addEmployee">
            <result name="added">/profile.jsp</result>
            <result name="error">/addEmployee.jsp</result>
          </action>
          
+         <action name="addTask"
+           class="net.pankaj.view.ContactAction" method="addTask">
+           <result name="added">/profile.jsp</result>
+           <result name="error">/addTask.jsp</result>
+         </action>
      
       <action name="login"
            class="net.pankaj.view.ContactAction" method="loginManager">

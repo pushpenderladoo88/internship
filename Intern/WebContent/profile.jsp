@@ -33,9 +33,8 @@
 <td>
 <!-- <h2>D E T A I L S</h2> -->
 <%-- <a  href="update.jsp?userId=<s:property value="userDetails.userId"/>">update</a> --%>
-<a href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
-EDIT<br>
-<img src="edit.png" alt="Edit Prfile" width="42" height="42" border="0"></a> 
+<a style="float: right" href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/256/edit.png" alt="Edit Prfile" width="52" height="52" border="0" style="float: right;"></a> 
 <table style="height: 250px;" width="900" border="1">
 <tr>
 <td>First Name </td>
@@ -75,8 +74,8 @@ ADD EMPLOYEE<br></a> --%>
 
            <br /> <img src="displayChart" />
 <td>
-<a style="text-align:right; float:right" href="<s:url action="addEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
-ADD EMPLOYEE<br></a>
+<a style="text-align:right; float:right" href="<s:url action="goToAddEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQOGEfXM9JhOBJLUIAj_9CYfG21PwW7nlP-dfROHlfJO1uq8G1XYg" alt="Add Employee" width="60" height="60" border="0" style="float: right;"></a>
 <s:iterator var="i" value="employeeList">
 <a href="<s:url action="showEmployee"><s:param name="userId" value="userId" ><s:property value="userId"/> </s:param></s:url>">
 <s:property value="firstName"/><br></a> 
@@ -96,7 +95,10 @@ ADD EMPLOYEE<br></a>
 
 </tbody>
 </table>
-<h1> T A S K &nbsp; &nbsp; &nbsp;D E T A I L S</h1>
+<h1> T A S K &nbsp; &nbsp; &nbsp;D E T A I L S
+<a style="text-align:right; float:right" href="<s:url action="goToAddTask"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+<img src="http://www.iconsplace.com/icons/preview/orange/add-list-256.png" alt="Add Task" width="60" height="60" border="0" style="float: right;"></a>
+</h1>
 <table width="100%" border="1">
 <tr>
     <th>Task</th>

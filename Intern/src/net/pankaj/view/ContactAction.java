@@ -153,7 +153,7 @@ public class ContactAction extends ActionSupport{
 			 e.printStackTrace();
 		 }
 		*/
-		 connection = getConnection();
+		 /*connection = getConnection();
 		 JDBCPieDataset dataSet = new JDBCPieDataset(connection);
 		 OutputStream out=null;
          try {
@@ -180,8 +180,8 @@ public class ContactAction extends ActionSupport{
            out.close();
           }catch(Exception e){
         	  e.printStackTrace();
-          }
-          }		 return "profile";
+          }*/
+          	 return "profile";
 	 }else{
 		 addActionError("Username or password is not correct");
 		 return "index";
@@ -189,7 +189,7 @@ public class ContactAction extends ActionSupport{
 	 
  } 
  
- public void doGet(HttpServletRequest request, HttpServletResponse response)
+ /*public void doGet(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
 	 System.out.println("inside doget");
 	 connection = getConnection();
@@ -221,7 +221,7 @@ public class ContactAction extends ActionSupport{
 	// TODO: handle exception
 	 e.printStackTrace();
 }
-}
+}*/
  
  public String showEmployee() {
 	 Check loginUser = new Check();
@@ -242,14 +242,17 @@ return "viewEmployee";
 }
  public String addEmployee(){
 	 Check add = new Check();
-	 
+	 request = ServletActionContext.getRequest();
 	 System.out.println("user id is "+ userId);
 	 System.out.println("manager id is "+ managerId);
+	 System.out.println("now after manager Id");
 	 int addEmp = add.adding(managerId,userId);
 	 System.out.println("returned value is "+ addEmp);
 	 if(addEmp>0){
 		 String uId = add.retrieveUserId(this);
+		 userDetails = add.retrieveUserDetails(managerId);
 		 employeeList = add.retrieveemployeeList(managerId);
+		 taskList = add.retrievetaskList(managerId);
 		 return "added";
 	 }else{
 		 addActionError("Username or password is not correct");
@@ -280,7 +283,28 @@ return "viewEmployee";
  }
  
  
+ public String addTask(){
+	 Check task = new Check();
+	 request = ServletActionContext.getRequest();
+	// String managerId = request.getParameter("managerId");
+	 System.out.println("user id is "+ userId);
+	 taskList = task.retrieveunassignedTaskList(userId);
+	 
+		 return "added";
+	 }
+ 
+ 
  public String goToAddEmployee(){
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	  managerId = request.getParameter("managerId");
+	 System.out.println("manager id is "+ managerId);
+		 return "success";
+	 
+	 
+ } 
+ 
+ public String goToAddTask(){
 	 request = ServletActionContext.getRequest();
 	 System.out.println("request ---->"+request);
 	  managerId = request.getParameter("managerId");
@@ -329,6 +353,7 @@ int i = updateUser.update(this.userDetails);
 	 if(i>0){
 		 userDetails = updateUser.retrieveUserDetails(this.userDetails.getUserId());
 		 employeeList = updateUser.retrieveemployeeList(this.userDetails.getUserId());
+		 taskList = updateUser.retrievetaskList(this.userDetails.getUserId());
 		 return "profile";
 	 }else{
 		 return "error";
@@ -336,7 +361,7 @@ int i = updateUser.update(this.userDetails);
 	 
  }
  
- public static Connection getConnection() {
+ /*public static Connection getConnection() {
      if (connection != null)
              return connection;
      else {
@@ -351,7 +376,7 @@ int i = updateUser.update(this.userDetails);
      return connection;
 }
 }
-      
+      */
     public String signup() throws Exception{
     	String navigte;
     	System.out.println("button clicked is --->"+buttonclickd);

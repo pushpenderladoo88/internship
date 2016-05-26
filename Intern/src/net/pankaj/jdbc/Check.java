@@ -156,6 +156,7 @@ public class Check extends ActionSupport {
 	      String valid;
 	      int status=0;
 	      Connection conn = null;
+	      System.out.println("now in database Check.java");
 
 	      try {
 	         String URL = "jdbc:mysql://localhost:3306/manage";
@@ -217,15 +218,13 @@ public class Check extends ActionSupport {
 	    	  String URL = "jdbc:mysql://localhost:3306/manage";
 		         Class.forName("com.mysql.jdbc.Driver");
 		         conn = DriverManager.getConnection(URL, "root", "12345");
-	   String sql = "Update user_tbl set first_name = ?, last_name = ?, email_id = ?, dob = ?,"
-	   		+ "      gender = ? where user_id = ?";
+	   String sql = "Update user_tbl set first_name = ?, last_name = ?, email_id = ?, dob = ? where user_id = ?";
        PreparedStatement ps = conn.prepareStatement(sql);
        ps.setString(1, s.getFirstName());
        ps.setString(2, s.getLastName());
        ps.setString(3, s.getEmailId());
        ps.setDate(4,s.getDob());
-       ps.setString(5, s.getGender());
-       ps.setString(6, s.getUserId());
+       ps.setString(5, s.getUserId());
        status=ps.executeUpdate();
    }
     catch (Exception e) {
@@ -376,6 +375,40 @@ return status;
 	        	 details.setEstimatedHours(rs.getInt("estimated_hours"));
 	        	 details.setTaskStartDate(rs.getDate("task_start_date"));
 	        	 details.setTaskEndDate(rs.getDate("task_end_date"));
+	        	 taskList.add(details);
+	         }
+	      } catch (Exception e) {
+	    	  System.out.println("error happen");
+	    	  e.printStackTrace();
+	         ret = ERROR;
+	      } 
+	      
+	      return taskList;
+	   }
+   
+   public List<Contact> retrieveunassignedTaskList(String userId ) {
+		  System.out.println("inside unassigned task list");
+		  System.out.println(userId);
+	      Connection conn = null;
+	      String ret = null;
+	      List<Contact> taskList = new ArrayList<Contact>();
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "select  task_id, task_name from task_assignment_tbl where assign_to = NULL";
+	         System.out.println("sql query  " + sql );
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 System.out.println("inside resultset");
+	        	  Contact details = new Contact();
+	        	 details.setTaskId(rs.getString("task_id"));
+	        	 details.setTaskName(rs.getString("task_name"));
 	        	 taskList.add(details);
 	         }
 	      } catch (Exception e) {
