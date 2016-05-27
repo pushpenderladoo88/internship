@@ -181,6 +181,36 @@ public class Check extends ActionSupport {
 	      return status;
 	   }
    
+   public int addingTask(String taskId,String assignTo) {
+	      String retur = ERROR;
+	      String valid;
+	      int status=0;
+	      Connection conn = null;
+	      System.out.println("now in database to add task");
+
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "update task_assignment_tbl set task_id = ? where assign_to = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, taskId);
+	         ps.setString(2, assignTo);
+	         status = ps.executeUpdate();
+
+	      } catch (Exception e) {
+	         status = 0;
+	      } finally { 
+	         if (conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	            }
+	         }
+	      }
+	      return status;
+	   }
+   
    public int deleting(String managerId,String userId) {
 	      String retur = ERROR;
 	      String valid;

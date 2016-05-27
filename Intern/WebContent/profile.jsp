@@ -38,7 +38,7 @@
 <table style="height: 250px;" width="900" border="1">
 <tr>
 <td>First Name </td>
-<td><s:label name="userDetails.firstName"></s:label> </td>
+<td><s:label name="userDetails.firstName"></s:label></td>
 <td>Last Name </td>
 <td><s:label name="userDetails.lastName"></s:label></td>
 </tr>

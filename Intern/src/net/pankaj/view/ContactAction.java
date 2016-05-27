@@ -255,7 +255,7 @@ return "viewEmployee";
 		 taskList = add.retrievetaskList(managerId);
 		 return "added";
 	 }else{
-		 addActionError("Username or password is not correct");
+		 addActionError("Unable to find any employee with provided userId");
 		 return "error";
 	 }
 	 
@@ -286,11 +286,21 @@ return "viewEmployee";
  public String addTask(){
 	 Check task = new Check();
 	 request = ServletActionContext.getRequest();
-	// String managerId = request.getParameter("managerId");
 	 System.out.println("user id is "+ userId);
-	 taskList = task.retrieveunassignedTaskList(userId);
-	 
+	 System.out.println("manager id is "+ managerId);
+	 System.out.println("now after manager Id");
+	 int addTsk = task.addingTask(managerId,userId);
+	 System.out.println("returned value is "+ addTsk);
+	 if(addTsk>0){
+		 String uId = task.retrieveUserId(this);
+		 userDetails = task.retrieveUserDetails(managerId);
+		 employeeList = task.retrieveemployeeList(managerId);
+		 taskList = task.retrievetaskList(managerId);
 		 return "added";
+	 }else{
+		 addActionError("Unable to add task");
+		 return "error";
+	 }
 	 }
  
  
