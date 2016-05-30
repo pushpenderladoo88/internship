@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="addTaskStyle.css">
 <title>Add Task</title>
 </head>
 <body>
@@ -16,15 +16,12 @@
       <s:actionerror/>
    </div>
 </s:if>
-<h2>UNASSIGNED    TASKS</h2>
 <s:form action="addTask">
-    <s:iterator var="k" value="taskList" >
-        <s:property value="taskId"/>
-        <s:property value="taskName"/> 
-  </s:iterator>
-  
-    <s:textfield name="userDetails.taskId" label="Task ID"/>
-    <s:textfield name="userDetails.userId" label="To User ID"/>
+
+        <s:property value="taskName"/>
+        <s:select label="Tasks not assigned " list="taskList" name="taskName" /><br><br>
+        <s:select label="Available Employees " list="employeeList" value="firstName" />
+
     <s:submit value="Assign" align="left"/>
   
 </s:form>

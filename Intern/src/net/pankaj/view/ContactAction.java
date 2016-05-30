@@ -320,6 +320,7 @@ return "viewEmployee";
 	 System.out.println("request ---->"+request);
 	  managerId = request.getParameter("managerId");
 	  taskList = task.retrieveunassignedTaskList();
+		 employeeList = task.retrieveemployeeList(managerId);
 	 System.out.println("manager id is "+ managerId);
 		 return "success";
 	 

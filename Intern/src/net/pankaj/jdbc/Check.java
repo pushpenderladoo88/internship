@@ -20,7 +20,7 @@ public class Check extends ActionSupport {
    private String user;
    private String pass;
    
-
+   
    public String checkUserRole(String userId ) {
 	  String empRole;
       String ret = ERROR;
@@ -436,7 +436,6 @@ return status;
 	         while (rs.next()) {
 	        	 System.out.println("inside unassigned resultset");
 	        	  Contact details = new Contact();
-	        	 details.setTaskId(rs.getString("task_id"));
 	        	 details.setTaskName(rs.getString("task_name"));
 	        	 taskList.add(details);
 	         }
