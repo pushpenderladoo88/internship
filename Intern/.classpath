@@ -46,6 +46,5 @@
 	<classpathentry kind="lib" path="/PieChart/WebContent/WEB-INF/lib/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="lib" path="/PieChart/WebContent/WEB-INF/lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="/PieChart/WebContent/WEB-INF/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

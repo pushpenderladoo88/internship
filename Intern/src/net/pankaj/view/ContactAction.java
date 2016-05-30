@@ -243,6 +243,7 @@ return "viewEmployee";
  public String addEmployee(){
 	 Check add = new Check();
 	 request = ServletActionContext.getRequest();
+	 //String managerId = request.getParameter("managerId");
 	 System.out.println("user id is "+ userId);
 	 System.out.println("manager id is "+ managerId);
 	 System.out.println("now after manager Id");
@@ -286,9 +287,8 @@ return "viewEmployee";
  public String addTask(){
 	 Check task = new Check();
 	 request = ServletActionContext.getRequest();
-	 System.out.println("user id is "+ userId);
-	 System.out.println("manager id is "+ managerId);
-	 System.out.println("now after manager Id");
+	 System.out.println("inside add task");
+	 taskList = task.retrieveunassignedTaskList();
 	 int addTsk = task.addingTask(managerId,userId);
 	 System.out.println("returned value is "+ addTsk);
 	 if(addTsk>0){
@@ -315,9 +315,11 @@ return "viewEmployee";
  } 
  
  public String goToAddTask(){
+	 Check task = new Check();
 	 request = ServletActionContext.getRequest();
 	 System.out.println("request ---->"+request);
 	  managerId = request.getParameter("managerId");
+	  taskList = task.retrieveunassignedTaskList();
 	 System.out.println("manager id is "+ managerId);
 		 return "success";
 	 

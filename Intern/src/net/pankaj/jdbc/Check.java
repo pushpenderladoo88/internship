@@ -416,9 +416,8 @@ return status;
 	      return taskList;
 	   }
    
-   public List<Contact> retrieveunassignedTaskList(String userId ) {
+   public List<Contact> retrieveunassignedTaskList() {
 		  System.out.println("inside unassigned task list");
-		  System.out.println(userId);
 	      Connection conn = null;
 	      String ret = null;
 	      List<Contact> taskList = new ArrayList<Contact>();
@@ -426,16 +425,16 @@ return status;
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "select  task_id, task_name from task_assignment_tbl where assign_to = NULL";
+	         String sql = "SELECT A.task_NAME, A.task_id FROM task_tbl A, task_assignment_tbl B WHERE A.TASK_ID = B.TASK_ID AND b.ASSIGN_TO is NULL";
 	         System.out.println("sql query  " + sql );
 	         //sql+=" empid = ? ";
 	         PreparedStatement ps = conn.prepareStatement(sql);
-	         ps.setString(1, userId);
+	       
 	         //ps.setString(2, role);
 	         ResultSet rs = ps.executeQuery();
 
 	         while (rs.next()) {
-	        	 System.out.println("inside resultset");
+	        	 System.out.println("inside unassigned resultset");
 	        	  Contact details = new Contact();
 	        	 details.setTaskId(rs.getString("task_id"));
 	        	 details.setTaskName(rs.getString("task_name"));

@@ -17,8 +17,8 @@
    </div>
 </s:if>
 <h2>UNASSIGNED    TASKS</h2>
-<s:form action="addTask" method="post">
-    <s:iterator var="k" value="unassignedList" >
+<s:form action="addTask">
+    <s:iterator var="k" value="taskList" >
         <s:property value="taskId"/>
         <s:property value="taskName"/> 
   </s:iterator>

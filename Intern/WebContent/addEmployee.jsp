@@ -20,6 +20,7 @@
 <s:form action="addEmployee" method="post">
     <s:textfield name="userId" label="Enter User ID"/>
      <s:hidden name="id" label="id"/>
+     <s:hidden name="managerId"></s:hidden>
     <s:submit value="Submit"/>
      
 </s:form>
