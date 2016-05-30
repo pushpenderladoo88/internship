@@ -288,9 +288,14 @@ return "viewEmployee";
 	 Check task = new Check();
 	 request = ServletActionContext.getRequest();
 	 System.out.println("inside add task");
-	 taskList = task.retrieveunassignedTaskList();
-	 int addTsk = task.addingTask(managerId,userId);
-	 System.out.println("returned value is "+ addTsk);
+	 System.out.println("selected task name is" + taskName);
+	 System.out.println("selected rmployee name is" + firstName);
+	 //System.out.println("selected task id is" + taskId);
+	 //System.out.println("selected rmployee id is" + userId);
+
+	 //taskList = task.retrieveunassignedTaskList();
+	 int addTsk = task.addingTask(taskName, firstName);
+	System.out.println("returned value is "+ addTsk);
 	 if(addTsk>0){
 		 String uId = task.retrieveUserId(this);
 		 userDetails = task.retrieveUserDetails(managerId);
@@ -301,6 +306,7 @@ return "viewEmployee";
 		 addActionError("Unable to add task");
 		 return "error";
 	 }
+	 
 	 }
  
  

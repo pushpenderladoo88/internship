@@ -181,7 +181,7 @@ public class Check extends ActionSupport {
 	      return status;
 	   }
    
-   public int addingTask(String taskId,String assignTo) {
+   public int addingTask(String taskId,String userId) {
 	      String retur = ERROR;
 	      String valid;
 	      int status=0;
@@ -192,19 +192,21 @@ public class Check extends ActionSupport {
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "update task_assignment_tbl set task_id = ? where assign_to = ? ";
+	         String sql = "update task_assignment_tbl set assign_to = ? where task_id = ? ";
 	         PreparedStatement ps = conn.prepareStatement(sql);
-	         ps.setString(1, taskId);
-	         ps.setString(2, assignTo);
+	         ps.setString(1, userId);
+	         ps.setString(2, taskId);
 	         status = ps.executeUpdate();
 
 	      } catch (Exception e) {
+	    	  e.printStackTrace();
 	         status = 0;
 	      } finally { 
 	         if (conn != null) {
 	            try {
 	               conn.close();
 	            } catch (Exception e) {
+	            	e.printStackTrace();
 	            }
 	         }
 	      }
@@ -437,6 +439,7 @@ return status;
 	        	 System.out.println("inside unassigned resultset");
 	        	  Contact details = new Contact();
 	        	 details.setTaskName(rs.getString("task_name"));
+	        	 details.setTaskId(rs.getString("task_id"));
 	        	 taskList.add(details);
 	         }
 	      } catch (Exception e) {

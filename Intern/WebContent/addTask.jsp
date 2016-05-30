@@ -19,8 +19,9 @@
 <s:form action="addTask">
 
         <s:property value="taskName"/>
-        <s:select label="Tasks not assigned " list="taskList" name="taskName" /><br><br>
-        <s:select label="Available Employees " list="employeeList" value="firstName" />
+        <s:select label="Tasks not assigned " list="taskList" listKey="taskId" listValue="taskName" name="taskName" /><br><br>
+        <s:select label="Available Employees " list="employeeList" listKey="userId" listValue="firstName" name="firstName" />
+             <s:hidden name="managerId"></s:hidden>
 
     <s:submit value="Assign" align="left"/>
   
