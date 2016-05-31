@@ -41,6 +41,7 @@ public class ContactAction extends ActionSupport{
     private List<Contact> contactList;
     private String id; 
     private String username;
+    private int count;
     private String password;
     private String firstName;
     private String lastName;
@@ -68,6 +69,8 @@ public class ContactAction extends ActionSupport{
     private static Connection connection = null;
     List<Contact> employeeList = new ArrayList<Contact>();
     List<Contact> taskList = new ArrayList<Contact>();
+    List<Contact> statusList = new ArrayList<Contact>();
+    List<Contact> statusTaskList = new ArrayList<Contact>();
     HttpServletRequest request;
     HttpServletResponse response;
     HttpSession session;
@@ -141,6 +144,7 @@ public class ContactAction extends ActionSupport{
 		 userDetails = loginUser.retrieveUserDetails(userId);
 		 employeeList = loginUser.retrieveemployeeList(userId);
 		 taskList = loginUser.retrievetaskList(userId);
+		 statusList = loginUser.retrieveStatusList(userId);
 		 System.out.println("tasklist size"+taskList.size());
 		 managerId =userId;
 		 request = ServletActionContext.getRequest();
@@ -240,6 +244,25 @@ public class ContactAction extends ActionSupport{
 	 managerId=userDetails.getManagerId();
 return "viewEmployee";	
 }
+ 
+ public String showStatus() {
+	 Check loginUser = new Check();
+	// String statusId = request.getParameter("statusId");
+	 System.out.println("Inshide show status method");
+	 System.out.println("status id is " + statusId);
+	 //HttpServletRequest req= HttpS;
+	 //req = session.get
+	//session = req.getSession();
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	 //System.out.println("response ---->"+response);
+	 //String userId = (String)session.getAttribute("userId");
+	 statusTaskList = loginUser.retrieveStatusTaskList(userId , statusId);
+	// statusId=userDetails.getStatusId();
+return "showStatus";	
+}
+ 
+ 
  public String addEmployee(){
 	 Check add = new Check();
 	 request = ServletActionContext.getRequest();
@@ -659,6 +682,30 @@ int i = updateUser.update(this.userDetails);
 
 	public void setTaskList(List<Contact> taskList) {
 		this.taskList = taskList;
+	}
+
+	public List<Contact> getStatusList() {
+		return statusList;
+	}
+
+	public void setStatusList(List<Contact> statusList) {
+		this.statusList = statusList;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public List<Contact> getStatusTaskList() {
+		return statusTaskList;
+	}
+
+	public void setStatusTaskList(List<Contact> statusTaskList) {
+		this.statusTaskList = statusTaskList;
 	}
 
 	

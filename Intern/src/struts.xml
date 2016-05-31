@@ -21,6 +21,11 @@
             <result name="viewEmployee">/viewEmployee.jsp</result>
         </action>
            
+           <action name="showStatus" 
+         class="net.pankaj.view.ContactAction" method="showStatus">
+            <result name="showStatus">/status.jsp</result>
+        </action>
+           
          <action name="check" 
          class="net.pankaj.view.ContactAction" method="checkEmployee">
          <result name="register">/register.jsp</result>

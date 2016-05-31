@@ -6,33 +6,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="profileStyle.css">
-<title>Home Page</title>
- <script type="text/javascript">
- function profileButtonClicked(){
-	 document.getElementById("buttonId").value ="profile";
- }
- function employeesButtonClicked(){
-	 document.getElementById("buttonId").value ="employees";
- }
- function projectButtonClicked(){
-	 document.getElementById("buttonId").value ="project";
- }
- function statusButtonClicked(){
-	 document.getElementById("buttonId").value ="status";
- }
- </script>
- 
+<title>Status</title>
 </head>	
 <body>
 <div class="add">
-<h1> Project Status </h1>
-<s:form  action="home" method="post">
-    <s:submit value="Proflie" action="profile" onclick="profileButtonClicked();"/>
-    <s:submit value="Employees" action="employees" onclick="emloyeesButtonClicked();"/>
-    <s:submit value="Project" action="project" onclick="projectButtonClicked();"/>
-    <s:submit value="Status" action="status" onclick="statusButtonClicked();"/> 
-    <s:hidden name="buttonclickd" label="use" id="buttonId" />
+<h1 align="center"> Status </h1><br>
+<s:if test="hasActionErrors()">
+   <div class="errors" style="color: red">
+      <s:actionerror/>
+   </div>
+</s:if>
+<s:form action="goback">
+
+    <table width="100%" border="1">
+<tr>
+    <th>Task</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Estimated Hours</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+</tr>
+
+<s:iterator var="j" value="statusTaskList" >
+
+    <tr>
+        <td><s:property value="taskName"/></td>
+        <td><s:property value="firstName "/> <s:property value="lastName"/> </td>
+        <td><s:property value="status"/></td>
+        <td><s:property value="estimatedHours"/></td>
+        <td><s:property value="taskStartDate"/></td>
+        <td><s:property value="taskEndDate"/></td>
+    </tr> 
+    
+    <s:hidden name="managerId"></s:hidden>
+
+    <s:submit value="Done" align="left"/>
+  
+  
+</s:iterator>
+ </table>
+             
 </s:form>
+
 </div>
 </body>
 </html>

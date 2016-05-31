@@ -72,7 +72,15 @@ ADD EMPLOYEE<br></a> --%>
 <tr>
 <td>
 
-           <br /> <img src="displayChart" />
+<s:iterator var="n" value="statusList">
+<a href="<s:url action="showStatus"><s:param name="statusId" value="statusId" ><s:property value="statusId"/> </s:param></s:url>">
+<s:property value="status "/> <s:property value="count"/><br></a> 
+<%-- <s:url  action="#" >
+<s:param name="userId" value="userId" ><s:property value="firstName"/> </s:param>
+</s:url> <s:property value="firstName"/> --%>
+<%-- <s:a href="%url"><s:property value="firstName"/> </s: --%>
+</s:iterator>
+
 <td>
 <a style="text-align:right; float:right" href="<s:url action="goToAddEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
 <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQOGEfXM9JhOBJLUIAj_9CYfG21PwW7nlP-dfROHlfJO1uq8G1XYg" alt="Add Employee" width="60" height="60" border="0" style="float: right;"></a>

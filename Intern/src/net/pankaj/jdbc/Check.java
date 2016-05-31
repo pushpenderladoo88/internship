@@ -418,6 +418,93 @@ return status;
 	      return taskList;
 	   }
    
+   public List<Contact> retrieveStatusList(String userId ) {
+		  System.out.println("inside Status list Check");
+		  System.out.println(userId);
+	      Connection conn = null;
+	      String ret = null;
+	      List<Contact> statusList = new ArrayList<Contact>();
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "select  status_tbl.STATUS,count(*) as count from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
+	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID "
+	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS "
+	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO "
+	        		 +"and user_tbl.MANAGER_ID = ? group by status_tbl.status";
+	         System.out.println("sql query  " + sql );
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 System.out.println("inside resultset");
+	        	  Contact details = new Contact();
+	        	 details.setStatus(rs.getString("status"));
+	        	 details.setCount(rs.getInt("count"));
+	        	 statusList.add(details);
+	         }
+	      } catch (Exception e) {
+	    	  System.out.println("error happen");
+	    	  e.printStackTrace();
+	         ret = ERROR;
+	      } 
+	      
+	      return statusList;
+	   }  
+   
+   
+   public List<Contact> retrieveStatusTaskList(String userId, String statusId ) {
+		  System.out.println("inside Status list Check");
+		  System.out.println("user id is "+ userId);
+		  System.out.println("status id is "+ statusId);
+	      Connection conn = null;
+	      String ret = null;
+	      List<Contact> statusTaskList = new ArrayList<Contact>();
+	      try {
+	         String URL = "jdbc:mysql://localhost:3306/manage";
+	         Class.forName("com.mysql.jdbc.Driver");
+	         conn = DriverManager.getConnection(URL, "root", "12345");
+	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME, "
+	        		 + "status_tbl.STATUS, status_tbl.status_id,task_assignment_tbl.ESTIMATED_HOURS,task_assignment_tbl.TASK_START_DATE , "
+	        		 +"task_assignment_tbl.TASK_END_DATE from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
+	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID "
+	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS "
+	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO "
+	        		 +"and user_tbl.MANAGER_ID = ? and status_tbl.status_id = ? ";
+	         System.out.println("sql query  " + sql );
+	         //sql+=" empid = ? ";
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         ps.setString(2, statusId);
+	         //ps.setString(2, role);
+	         ResultSet rs = ps.executeQuery();
+
+	         while (rs.next()) {
+	        	 System.out.println("inside resultset");
+	        	  Contact details = new Contact();
+	        	     details.setTaskName(rs.getString("task_name"));
+		        	 details.setFirstName(rs.getString("first_name"));
+		        	 details.setLastName(rs.getString("last_name"));
+		        	 details.setStatus(rs.getString("status"));
+		        	 details.setEstimatedHours(rs.getInt("estimated_hours"));
+		        	 details.setTaskStartDate(rs.getDate("task_start_date"));
+		        	 details.setTaskEndDate(rs.getDate("task_end_date")); 
+	        	 statusTaskList.add(details);
+	         }
+	      } catch (Exception e) {
+	    	  System.out.println("error happen");
+	    	  e.printStackTrace();
+	         ret = ERROR;
+	      } 
+	      
+	      return statusTaskList;
+	   }  
+
+   
    public List<Contact> retrieveunassignedTaskList() {
 		  System.out.println("inside unassigned task list");
 	      Connection conn = null;

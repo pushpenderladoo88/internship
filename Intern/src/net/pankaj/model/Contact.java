@@ -25,6 +25,7 @@ public class Contact extends ActionSupport implements Serializable{
     private String managerId;
     private Date dob;
     private int salary;
+    private int count;
     private char isActive;
     private String username;
     private String password;
@@ -182,6 +183,12 @@ public class Contact extends ActionSupport implements Serializable{
 	}
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 }
