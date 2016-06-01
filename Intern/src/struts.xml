@@ -44,6 +44,11 @@
            <result name="success">/addEmployee.jsp</result>
          </action>
          
+            <action name="goToPieChart"
+           class="net.pankaj.view.ContactAction" method="goToPieChart">
+           <result name="success">/pieChart.jsp</result>
+         </action>
+         
          <action name="goToAddTask"
            class="net.pankaj.view.ContactAction" method="goToAddTask">
            <result name="success">/addTask.jsp</result>

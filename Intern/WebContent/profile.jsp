@@ -71,7 +71,8 @@ ADD EMPLOYEE<br></a> --%>
 <tbody>
 <tr>
 <td>
-
+<a style="text-align:right; float:right" href="<s:url action="goToPieChart"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
+<img src="http://www.iconsdb.com/icons/preview/caribbean-blue/pie-chart-xxl.png" alt="Project Status" width="60" height="60" border="0" style="float: right;"></a>
 <s:iterator var="n" value="statusList">
 <a href="<s:url action="showStatus"><s:param name="statusId" value="statusId" ><s:property value="statusId"/> </s:param></s:url>">
 <s:property value="status "/> <s:property value="count"/><br></a> 

@@ -343,6 +343,16 @@ return "showStatus";
 	 
  } 
  
+ public String goToPieChart(){
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	  managerId = request.getParameter("managerId");
+	 System.out.println("manager id is "+ managerId);
+		 return "success";
+	 
+	 
+ }
+ 
  public String goToAddTask(){
 	 Check task = new Check();
 	 request = ServletActionContext.getRequest();
