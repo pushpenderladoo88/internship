@@ -428,7 +428,7 @@ return status;
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "select  status_tbl.STATUS,count(*) as count from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
+	         String sql = "select  status_tbl.STATUS,status_tbl.STATUS_ID,count(*) as count from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
 	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID "
 	        		 +"and status_tbl.STATUS_ID = task_assignment_tbl.STATUS "
 	        		 +"and user_tbl.USER_ID = task_assignment_tbl.ASSIGN_TO "
@@ -444,6 +444,7 @@ return status;
 	        	 System.out.println("inside resultset");
 	        	  Contact details = new Contact();
 	        	 details.setStatus(rs.getString("status"));
+	        	 details.setStatusId(rs.getString("status_id"));
 	        	 details.setCount(rs.getInt("count"));
 	        	 statusList.add(details);
 	         }

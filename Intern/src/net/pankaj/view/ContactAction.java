@@ -247,14 +247,18 @@ return "viewEmployee";
  
  public String showStatus() {
 	 Check loginUser = new Check();
-	// String statusId = request.getParameter("statusId");
+	 request = ServletActionContext.getRequest();
+	 System.out.println("request ---->"+request);
+	String statusId = request.getParameter("statusId");
+	String userId = request.getParameter("userId");
 	 System.out.println("Inshide show status method");
 	 System.out.println("status id is " + statusId);
+	 
 	 //HttpServletRequest req= HttpS;
 	 //req = session.get
 	//session = req.getSession();
-	 request = ServletActionContext.getRequest();
-	 System.out.println("request ---->"+request);
+	 
+	
 	 //System.out.println("response ---->"+response);
 	 //String userId = (String)session.getAttribute("userId");
 	 statusTaskList = loginUser.retrieveStatusTaskList(userId , statusId);
@@ -347,6 +351,7 @@ return "showStatus";
 	 request = ServletActionContext.getRequest();
 	 System.out.println("request ---->"+request);
 	  managerId = request.getParameter("managerId");
+	  
 	 System.out.println("manager id is "+ managerId);
 		 return "success";
 	 

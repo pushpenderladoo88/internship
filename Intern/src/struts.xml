@@ -45,7 +45,7 @@
          </action>
          
             <action name="goToPieChart"
-           class="net.pankaj.view.ContactAction" method="goToPieChart">
+           class="net.pankaj.pieChartAction.PieChart" method="getPieChart">
            <result name="success">/pieChart.jsp</result>
          </action>
          
