@@ -24,6 +24,7 @@
              <s:hidden name="managerId"></s:hidden>
 
     <s:submit value="Assign" align="left"/>
+    <s:submit value="Back" action="done"></s:submit>
   
 </s:form>
 

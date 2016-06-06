@@ -469,7 +469,7 @@ return status;
 	         String URL = "jdbc:mysql://localhost:3306/manage";
 	         Class.forName("com.mysql.jdbc.Driver");
 	         conn = DriverManager.getConnection(URL, "root", "12345");
-	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME, "
+	         String sql = "select  task_tbl.TASK_NAME, user_tbl.FIRST_NAME ,user_tbl.LAST_NAME, user_tbl.MANAGER_ID, user_tbl.USER_ID, "
 	        		 + "status_tbl.STATUS, status_tbl.status_id,task_assignment_tbl.ESTIMATED_HOURS,task_assignment_tbl.TASK_START_DATE , "
 	        		 +"task_assignment_tbl.TASK_END_DATE from task_tbl,user_tbl,status_tbl,task_assignment_tbl "
 	        		 +"where task_tbl.TASK_ID = task_assignment_tbl.TASK_ID "
@@ -494,6 +494,8 @@ return status;
 		        	 details.setEstimatedHours(rs.getInt("estimated_hours"));
 		        	 details.setTaskStartDate(rs.getDate("task_start_date"));
 		        	 details.setTaskEndDate(rs.getDate("task_end_date")); 
+		        	 details.setManagerId(rs.getString("manager_Id"));
+		        	 details.setUserId(rs.getString("user_id"));
 	        	 statusTaskList.add(details);
 	         }
 	      } catch (Exception e) {

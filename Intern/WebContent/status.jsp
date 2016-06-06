@@ -16,7 +16,7 @@
       <s:actionerror/>
    </div>
 </s:if>
-<s:form action="goback">
+<s:form action="goBack" method="post">
 
     <table width="100%" border="1">
 <tr>
@@ -39,13 +39,17 @@
         <td><s:property value="taskEndDate"/></td>
     </tr> 
     
-    <s:hidden name="managerId"></s:hidden>
+    
 
-    <s:submit value="Done" align="left"/>
+    
   
   
 </s:iterator>
  </table>
+
+ <s:submit value="Back" align="left"/>
+  <s:hidden name="managerId"></s:hidden>
+  <s:hidden name="userId"></s:hidden>
              
 </s:form>
 

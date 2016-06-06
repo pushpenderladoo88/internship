@@ -96,7 +96,7 @@ public class ContactAction extends ActionSupport{
       int i = insertValues.insert(this);
       System.out.println("status "  + i);
        if(i == 3){
-    	   addActionError("User already exist");
+    	   addActionError("Username already exist");
     	   return "register";
        }else if(i>0){
     	   return "login";
@@ -266,6 +266,31 @@ return "viewEmployee";
 return "showStatus";	
 }
  
+ public String logout(){
+	 return "logout";
+ }
+ 
+ public String done(){
+	 Check back = new Check();
+	 System.out.println("manager id is "+ managerId);
+	 userDetails = back.retrieveUserDetails(managerId);
+	 employeeList = back.retrieveemployeeList(managerId);
+	 taskList = back.retrievetaskList(managerId);
+	 statusList = back.retrieveStatusList(managerId);
+	 return "done";
+ }
+ 
+ public String goBack(){
+	 Check back = new Check();
+	 System.out.println("manager id is "+ managerId);
+	 String uId = back.retrieveUserId(this);
+	 userDetails = back.retrieveUserDetails(managerId);
+	 employeeList = back.retrieveemployeeList(managerId);
+	 taskList = back.retrievetaskList(managerId);
+	 statusList = back.retrieveStatusList(managerId);
+	 return "goBack";
+ }
+ 
  
  public String addEmployee(){
 	 Check add = new Check();
@@ -281,6 +306,7 @@ return "showStatus";
 		 userDetails = add.retrieveUserDetails(managerId);
 		 employeeList = add.retrieveemployeeList(managerId);
 		 taskList = add.retrievetaskList(managerId);
+		 statusList = add.retrieveStatusList(managerId);
 		 return "added";
 	 }else{
 		 addActionError("Unable to find any employee with provided userId");
@@ -303,6 +329,7 @@ return "showStatus";
 		 userDetails = loginUser.retrieveUserDetails(managerId);
 		 employeeList = loginUser.retrieveemployeeList(managerId);
 		 taskList = loginUser.retrievetaskList(managerId);
+		 statusList = loginUser.retrieveStatusList(managerId);
 		 return "deleted";
 	 }else{
 		 return "error";
@@ -328,6 +355,7 @@ return "showStatus";
 		 userDetails = task.retrieveUserDetails(managerId);
 		 employeeList = task.retrieveemployeeList(managerId);
 		 taskList = task.retrievetaskList(managerId);
+		 statusList = task.retrieveStatusList(managerId);
 		 return "added";
 	 }else{
 		 addActionError("Unable to add task");
@@ -411,6 +439,7 @@ int i = updateUser.update(this.userDetails);
 		 userDetails = updateUser.retrieveUserDetails(this.userDetails.getUserId());
 		 employeeList = updateUser.retrieveemployeeList(this.userDetails.getUserId());
 		 taskList = updateUser.retrievetaskList(this.userDetails.getUserId());
+		 statusList = updateUser.retrieveStatusList(this.userDetails.getUserId());
 		 return "profile";
 	 }else{
 		 return "error";

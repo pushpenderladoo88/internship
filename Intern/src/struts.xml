@@ -25,6 +25,21 @@
          class="net.pankaj.view.ContactAction" method="showStatus">
             <result name="showStatus">/status.jsp</result>
         </action>
+        
+         <action name="logout" 
+         class="net.pankaj.view.ContactAction" method="logout">
+            <result name="logout">/index.jsp</result>
+        </action>
+        
+          <action name="done" 
+         class="net.pankaj.view.ContactAction" method="done">
+            <result name="done">/profile.jsp</result>
+        </action>
+        
+         <action name="goBack" 
+         class="net.pankaj.view.ContactAction" method="goBack">
+            <result name="goBack">/profile.jsp</result>
+        </action>
            
          <action name="check" 
          class="net.pankaj.view.ContactAction" method="checkEmployee">

@@ -25,6 +25,8 @@
 </head>	
 <body>
 <div >
+<a style="text-align:right; float:right;" href="<s:url action="logout"></s:url>">
+Logout</a>
 <h1> U S E R &nbsp; &nbsp; &nbsp;P R O F I L E </h1>
 <s:form  action="home" method="post">
     <table style="height: 70%;" width="100%" border="1">
@@ -67,12 +69,12 @@
 <%-- <a href="addEmployee.jsp?userId=<s:property value="userId"/>">Add Employee</a> --%>
 <%-- <a href="<s:url action="addEmployee"><s:param name="managerId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
 ADD EMPLOYEE<br></a> --%>
-<table style="height: 450px;" width="100%" border="1">
+<table style="height: 250px;" width="100%" border="1">
 <tbody>
 <tr>
 <td>
 <a style="text-align:right; float:right" href="<s:url action="goToPieChart"><s:param name="pieId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
-<img src="http://www.iconsdb.com/icons/preview/caribbean-blue/pie-chart-xxl.png" alt="Project Status" width="60" height="60" border="0" style="float: right;"></a>
+<img src="http://www.uspto.gov/sites/default/files/styles/wysiwyg_small/public/Statistics%20-%20Pie%20Chart.png?itok=mBa33Xyh" alt="Project Status" width="60" height="60" border="0" style="float: right;"></a>
 <s:iterator var="n" value="statusList">
 <a href="<s:url action="showStatus"><s:param name="statusId" value="statusId" ><s:property value="statusId"/> </s:param><s:param name="userId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
 <s:property value="status "/> <s:property value="count"/><br></a> 
