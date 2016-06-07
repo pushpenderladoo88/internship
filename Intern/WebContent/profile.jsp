@@ -37,25 +37,20 @@ Logout</a>
 <%-- <a  href="update.jsp?userId=<s:property value="userDetails.userId"/>">update</a> --%>
 <a style="float: right" href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
 <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/256/edit.png" alt="Edit Prfile" width="52" height="52" border="0" style="float: right;"></a> 
-<table style="height: 250px;" width="900" border="1">
-<tr>
-<td>First Name </td>
-<td><s:label name="userDetails.firstName"></s:label></td>
-<td>Last Name </td>
-<td><s:label name="userDetails.lastName"></s:label></td>
-</tr>
-<tr>
-<td>Email ID </td>
-<td><s:label name="userDetails.emailId"></s:label></td>
-<td>Role </td>
-<td><s:label name="userDetails.roleName"></s:label></td>
-</tr>
-<tr>
-<td>Gender </td>
-<td><s:label name="userDetails.gender"></s:label></td>
-<td>Date of birth </td>
-<td><s:label name="userDetails.dob"></s:label></td>
-</tr>
+<table style="height: 100px;" width="900" border="1">
+
+<s:label label="First Name" name="userDetails.firstName"></s:label>
+
+<s:label label="Last Name" name="userDetails.lastName"></s:label>
+
+<s:label label="Email ID" name="userDetails.emailId"></s:label>
+
+<s:label label="Role" name="userDetails.roleName"></s:label>
+
+<s:label label="Gender" name="userDetails.gender"></s:label>
+
+<s:label label="Date of birth" name="userDetails.dob"></s:label>
+
 
 </table>
 </td>
