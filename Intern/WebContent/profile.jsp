@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--  <link rel="stylesheet" type="text/css" href="profileStyle.css">  -->
+<link rel="stylesheet" type="text/css" href="profileStyle.css">
 <title>Home Page</title>
  <script type="text/javascript">
  function profileButtonClicked(){
@@ -29,15 +29,15 @@
 Logout</a>
 <h1> U S E R &nbsp; &nbsp; &nbsp;P R O F I L E </h1>
 <s:form  action="home" method="post">
-    <table style="height: 70%;" width="100%" border="1">
+    <table style="height: 70%;" width="100%" border="0">
 <tbody>
 <tr>
 <td>
 <!-- <h2>D E T A I L S</h2> -->
 <%-- <a  href="update.jsp?userId=<s:property value="userDetails.userId"/>">update</a> --%>
 <a style="float: right" href="<s:url action="update"><s:param name="uId" value="userDetails.userId" ><s:property value="userDetails.userId"/> </s:param></s:url>">
-<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/256/edit.png" alt="Edit Prfile" width="52" height="52" border="0" style="float: right;"></a> 
-<table style="height: 100px;" width="900" border="1">
+<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/256/edit.png" alt="Edit Prfile" width="52" height="40" border="0" style="float: right;"></a> 
+<table style="height: 100px;" width="900" border="0">
 
 <s:label label="First Name" name="userDetails.firstName"></s:label>
 

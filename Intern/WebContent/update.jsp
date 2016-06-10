@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="profileStyle.css">
+<link rel="stylesheet" type="text/css" href="updateStyle.css">
 <title>Update User Detaisl</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
     <s:textfield name="userDetails.lastName" label="Last Name"/>
     <s:textfield name="userDetails.emailId" label="Email ID"/>
     <s:textfield name="userDetails.dob" label="Date Of Birth(MM/DD/YY)"/>
-    <s:submit value="Update Contact" align="center"/>
+    <s:submit value="Update" align="center"/>
 </s:form>
 </div>
 </body>

@@ -37,14 +37,14 @@
 </head>
 <body>
 <div class="add">
-<h1> Only managers can register for this program</h1>
+<h1> Enter employee employment ID</h1>
 <s:if test="hasActionErrors()">
    <div class="errors" style="color: red">
       <s:actionerror/>
    </div>
 </s:if>
 <s:form action="check" method="post" onsubmit="return validate();" >
-    <s:textfield name="id" label="Employment ID"/>
+    <s:textfield name="id" label="Empoyment ID"/>
     <s:submit value="Submit" align="center"/>
     
 </s:form>
