@@ -1,0 +1,213 @@
+body {
+    background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/03/02/283837/c80224a52170a32342120ec722001e95.jpg");
+    /*  background-position: 100%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Montserrat;
+    border: 1px solid black;
+}
+
+#signup_login {
+    /*+placement: 4px 4px;*/
+    position: relative;
+    left: 4px;
+    top: 4px;
+    font-weight: bold;
+    font-style: normal;
+    background-color: rgba(0, 218, 0, 0.641);
+    color: white;
+}
+
+#signup_signup {
+    font-weight: bold;
+    font-style: normal;
+    /*+placement: 3px -6px;*/
+    position: relative;
+    left: 3px;
+    top: -6px;
+    background-color: #0064EF;
+    color: #FFFFFF;
+}
+
+.label {
+    /*+placement: -3px -6px;*/
+    position: relative;
+    left: -3px;
+    top: -6px;
+}
+
+#a {
+    /*+placement: -1px 1px;*/
+    position: relative;
+    left: -1px;
+    top: 1px;
+}
+
+#b {
+    /*+placement: -2px 0px;*/
+    position: relative;
+    left: -2px;
+    top: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.label {
+}
+
+.add {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 0.8;
+    width: 350px;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border-top: 5px solid #FF656C;
+    position: absolute;
+    left: 400px;
+    top: 200px;
+}
+
+.add {
+}
+
+#head {
+    font-style: normal;
+    line-height: 2;
+    font-family: Aller;
+    color: rgba(135, 135, 135, 0.991);
+}
+
+54A440406E6505D5AB3A3003A8D90369_login {
+    background-color: rgba(108, 255, 2, 0.974);
+    font-weight: normal;
+    font-style: normal;
+    font-size: ;
+}
+
+.label {
+    font-family: Fontin-Sans;
+    font-weight: 400;
+    font-style: normal;
+    font-size: x-large;
+    line-height: 3;
+    color: rgba(86, 84, 84, 0.991);
+    width: 5px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+    border-top: 0 solid black;
+}
+
+54A440406E6505D5AB3A3003A8D90369_login {
+    font-weight: normal;
+    background-color: rgba(37, 222, 0, 0.906);
+    color: #FFFFFF;
+}
+
+td {
+    font-size: ;
+    line-height: ;
+}
+
+#b {
+    line-height: ;
+}
+
+#blur {
+    width: 400px;
+    background-color: black;
+    height: 1000px;
+    padding: 20px;
+    -webkit-filter: blur(10px);
+    filter: url('/media/blur.svg#blur');
+    filter: blur(10px);
+    opacity: 0.5;
+}
+
+.add input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none #5D0808;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.add button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.add submit {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.add signup {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.add button {
+    width: 100%;
+    height: 40px;
+    background: #FF656C;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #E15960;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.add submit {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

@@ -1,0 +1,112 @@
+H1
+{
+}
+A
+{
+	margin-top: -16px;
+	padding-top: 0px;
+	padding-left: 0px;
+	border-bottom: 23px solid black;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 17px;
+	line-height: 3.3;
+	font-family: GT Walsheim;
+	color: #000000;
+	/*+placement: 15px 59px;*/
+	position: relative;
+	left: 15px;
+	top: 59px;
+	width: 38px;
+	height: 39px;
+}
+A
+{
+	/*+placement: -73px 9px;*/
+	position: relative;
+	left: -73px;
+	top: 9px;
+}
+IMG
+{
+	/*+placement: -81px 22px;*/
+	position: relative;
+	left: -81px;
+	top: 22px;
+	font-size: 0px;
+	color: #000000;
+}
+TABLE
+{
+	border: 0px;
+	/*+placement: 7px -11px;*/
+	position: relative;
+	left: 7px;
+	top: -11px;
+	width: ;
+	line-height: 1.9;
+	font-size: 16px;
+	font-family: Fira Sans;
+	color: rgba(57, 57, 57, 0.846);
+	font-weight: bold;
+	font-style: italic;
+	text-align: start;
+	height: 10px;
+	background-color: rgba(188, 193, 200, 0.111);
+}
+.label
+{
+	/*+placement: 41px -2px;*/
+	position: relative;
+	left: 41px;
+	top: -2px;
+	width: 100px;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 18px;
+	border: 0px;
+}
+TD
+{
+	/*+placement: -7px 0px;*/
+	position: relative;
+	left: -7px;
+	top: 0px;
+}
+H1
+{
+	/*+placement: 11px 19px;*/
+	position: relative;
+	left: 11px;
+	top: 19px;
+}
+A
+{
+	/*+placement: 75px -14px;*/
+	position: relative;
+	left: 75px;
+	top: -14px;
+}
+A
+{
+	margin-left: -47px;
+	margin-right: 0px;
+	margin-top: -4px;
+}
+H1
+{
+	/*+placement: 3px 13px;*/
+	position: relative;
+	left: 3px;
+	top: 13px;
+}
+IMG
+{
+	/*+placement: -84px -3px;*/
+	position: relative;
+	left: -84px;
+	top: -3px;
+}
+A
+{
+}
