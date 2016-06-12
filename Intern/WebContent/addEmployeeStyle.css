@@ -1,0 +1,23 @@
+body {
+    background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/03/02/283837/c80224a52170a32342120ec722001e95.jpg");
+    /*  background-position: 100%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Montserrat;
+    border: 1px solid black;
+}
+
+
+.add {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 0.8;
+    width: 350px;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border-top: 5px solid #FF656C;
+    position: absolute;
+    left: 400px;
+    top: 200px;
+}

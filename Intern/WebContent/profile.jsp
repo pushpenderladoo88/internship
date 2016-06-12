@@ -24,7 +24,7 @@
  
 </head>	
 <body>
-<div >
+<div class="add">
 <a style="text-align:right; float:right;" href="<s:url action="logout"></s:url>">
 Logout</a>
 <h1> U S E R &nbsp; &nbsp; &nbsp;P R O F I L E </h1>
@@ -84,7 +84,7 @@ ADD EMPLOYEE<br></a> --%>
 <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQOGEfXM9JhOBJLUIAj_9CYfG21PwW7nlP-dfROHlfJO1uq8G1XYg" alt="Add Employee" width="60" height="60" border="0" style="float: right;"></a>
 <s:iterator var="i" value="employeeList">
 <a href="<s:url action="showEmployee"><s:param name="userId" value="userId" ><s:property value="userId"/> </s:param></s:url>">
-<s:property value="firstName"/><br></a> 
+<s:property value="firstName"/><br></a>
 <%-- <s:url  action="#" >
 <s:param name="userId" value="userId" ><s:property value="firstName"/> </s:param>
 </s:url> <s:property value="firstName"/> --%>

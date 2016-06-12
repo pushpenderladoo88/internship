@@ -44,7 +44,8 @@
         </script-->
 </head>	
 <body>
-<div class="add">
+<center>
+<div class="add" align="center">
 <h1 align="center" id="head"> Login/Register </h1>
 <s:if test="hasActionErrors()">
    <div class="errors" style="color: red">
@@ -62,5 +63,6 @@
     <s:hidden name="buttonclickd" label="Username" id="buttonId" />
 </s:form>
 </div>
+</center>
 </body>
 </html>

@@ -1,0 +1,113 @@
+body {
+    background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/03/02/283837/c80224a52170a32342120ec722001e95.jpg");
+    /*  background-position: 100%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Montserrat;
+}
+
+#updateDetails_0 {
+    color: white;
+    font-weight: bold;
+    background-color: #17AE17;
+}
+
+.add {
+    /*+placement: -378px 158px;*/
+    position: relative;
+    left: -378px;
+    top: 158px;
+}
+
+.add {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 0.8;
+    width: 350px;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border-top: 5px solid #FF656C;
+    position: absolute;
+    left: 400px;
+    top: 200px;
+    /*+placement: 389px 168px;*/
+    position: relative;
+    left: 389px;
+    top: 168px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 34px;
+}
+
+.label {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.3;
+    color: gray;
+    /*+placement: 10px -12px;*/
+    position: relative;
+    left: 10px;
+    top: -12px;
+    text-align: left;
+}
+
+.add input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none #5D0808;
+    font-weight: normal;
+    font-style: normal;
+}
+
+#updateDetails_userDetails_userId {
+    /*+placement: -22px -4px;*/
+    position: relative;
+    left: -22px;
+    top: -4px;
+}
+
+#updateDetails_userDetails_firstName {
+    /*+placement: -22px -4px;*/
+    position: relative;
+    left: -22px;
+    top: -4px;
+}
+
+#updateDetails_userDetails_dob {
+    /*+placement: -22px -4px;*/
+    position: relative;
+    left: -22px;
+    top: -4px;
+}
+
+#updateDetails_userDetails_lastName {
+    /*+placement: -22px -4px;*/
+    position: relative;
+    left: -22px;
+    top: -4px;
+}
+
+#updateDetails_userDetails_emailId {
+    /*+placement: -22px -4px;*/
+    position: relative;
+    left: -22px;
+    top: -4px;
+}
+
+#updateDetails_0 {
+    /*+placement: -1px 11px;*/
+    position: relative;
+    left: -1px;
+    top: 11px;
+}

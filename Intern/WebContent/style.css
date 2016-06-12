@@ -7,6 +7,24 @@ body {
     border: 1px solid black;
 }
 
+.add {
+    /*+placement: 117px 61px;*/
+    position: relative;
+    left: 117px;
+    top: 61px;
+    height: 331px;
+    width: 14px;
+}
+
+.add {
+    /*+placement: 4px 3px;*/
+    position: relative;
+    left: 4px;
+    top: 3px;
+    height: 82px;
+    width: 26px;
+}
+
 #signup_login {
     /*+placement: 4px 4px;*/
     position: relative;
@@ -61,7 +79,7 @@ h1 {
     -webkit-filter: blur(0px);
     filter: blur(0px);
     opacity: 0.8;
-    width: 350px;
+    width: 365px;
     padding: 20px;
     background: #FFF;
     border-radius: 5px;
@@ -72,6 +90,24 @@ h1 {
 }
 
 .add {
+    height: 373px;
+    width: 395px;
+    /*+placement: 323px 201px;*/
+    position: relative;
+    left: 323px;
+    top: 201px;
+}
+
+a {
+}
+
+#addEmployee_0 {
+    color: white;
+    font-weight: bold;
+    background-color: #0FD20F;
+}
+
+#updateDetails_0 {
 }
 
 #head {
