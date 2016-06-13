@@ -2,8 +2,10 @@ body {
     background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/03/02/283837/c80224a52170a32342120ec722001e95.jpg");
     /*  background-position: 100%; */
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     font-family: Montserrat;
+    border: 1px solid black;
 }
 
 #updateDetails_0 {

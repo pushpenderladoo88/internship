@@ -2,38 +2,10 @@ body {
     background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/03/02/283837/c80224a52170a32342120ec722001e95.jpg");
     /*  background-position: 100%; */
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     font-family: Montserrat;
     border: 1px solid black;
-}
-
-.add {
-    /*+placement: 117px 61px;*/
-    position: relative;
-    left: 117px;
-    top: 61px;
-    height: 331px;
-    width: 14px;
-}
-
-.add {
-    /*+placement: 4px 3px;*/
-    position: relative;
-    left: 4px;
-    top: 3px;
-    height: 82px;
-    width: 26px;
-}
-
-#signup_login {
-    /*+placement: 4px 4px;*/
-    position: relative;
-    left: 4px;
-    top: 4px;
-    font-weight: bold;
-    font-style: normal;
-    background-color: rgba(0, 218, 0, 0.641);
-    color: white;
 }
 
 #signup_signup {
@@ -45,6 +17,69 @@ body {
     top: -6px;
     background-color: #0064EF;
     color: #FFFFFF;
+}
+
+#done_userDetails_userId {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_firstName {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_lastName {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_emailId {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_dob {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_gender {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
+}
+
+#done_userDetails_managerId {
+    /*+placement: -4px -8px;*/
+    position: relative;
+    left: -4px;
+    top: -8px;
+    font-size: 24px;
+    color: black;
 }
 
 .label {
@@ -79,7 +114,7 @@ h1 {
     -webkit-filter: blur(0px);
     filter: blur(0px);
     opacity: 0.8;
-    width: 365px;
+    width: 282px;
     padding: 20px;
     background: #FFF;
     border-radius: 5px;
@@ -87,27 +122,6 @@ h1 {
     position: absolute;
     left: 400px;
     top: 200px;
-}
-
-.add {
-    height: 373px;
-    width: 395px;
-    /*+placement: 323px 201px;*/
-    position: relative;
-    left: 323px;
-    top: 201px;
-}
-
-a {
-}
-
-#addEmployee_0 {
-    color: white;
-    font-weight: bold;
-    background-color: #0FD20F;
-}
-
-#updateDetails_0 {
 }
 
 #head {
@@ -146,15 +160,6 @@ a {
     color: #FFFFFF;
 }
 
-td {
-    font-size: ;
-    line-height: ;
-}
-
-#b {
-    line-height: ;
-}
-
 #blur {
     width: 400px;
     background-color: black;
@@ -179,6 +184,12 @@ td {
     outline: none #5D0808;
     font-weight: normal;
     font-style: normal;
+}
+
+#signup_login {
+    color: white;
+    font-weight: bold;
+    background-color: #3DC83D;
 }
 
 .add button {
