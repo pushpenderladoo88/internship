@@ -11,6 +11,16 @@ BODY
 	font-family: Montserrat;
 	border: 1px solid black;
 }
+#goBack_0
+{
+	line-height: 1.5;
+	height: 41px;
+	width: 137px;
+	font-size: 22px;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.821);
+	font-family: Montserrat;
+}
 A
 {
 	/*+placement: 16px -1px;*/

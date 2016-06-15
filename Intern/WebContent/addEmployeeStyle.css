@@ -5,7 +5,6 @@ body {
     background-attachment: fixed;
     background-size: cover;
     font-family: Montserrat;
-    border: 1px solid black;
 }
 
 #addEmployee_0 {
@@ -46,10 +45,10 @@ body {
     position: absolute;
     left: 400px;
     top: 200px;
-    /*+placement: 345px 231px;*/
+    /*+placement: 397px 245px;*/
     position: relative;
-    left: 345px;
-    top: 231px;
+    left: 397px;
+    top: 245px;
     height: 186px;
 }
 
